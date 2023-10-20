@@ -1,0 +1,13 @@
+#creamos la variable entrada para empezar el split
+entrada=input()
+#creamos datos para asignarle el split de entrada y dentro del parentesis solo ponemos las comillas.
+datos=entrada.split(" ")
+#colocamos otras dos variables con sus respectivos int para que se puedan colocar los datos con espacio.
+#empezamos por 0 porque empieza a contar desde dicho numero y al ser dos, terminamos en 1.
+n1=int(datos[0])
+n2=int(datos[1])
+#creamos el for poniendo el n2 como rango de las veces que se repetira el n1
+for i in range(n2):
+    #imprimimos el n1 ya que es el numero que queremos repetir y terminamos con end="" con las comillas vacias y sin espacio.
+    print(n1,end="")
+print()    
