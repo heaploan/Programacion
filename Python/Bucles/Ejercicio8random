@@ -1,20 +1,26 @@
-maxIntentos=5
-n=0   
-#Creamos n como la variable para que se guarde el numero introducido por el usuario.
-for n in range (maxIntentos):
-    n=int(input("Intenta adivinar el numero en un rango del 1 al 50: "))
-    import random
-    aleatorio=random.randint(1,50)
-#creamos el import random para que haga el numero aleatorio y la variable aleatorio para que se guarde el numero producido.
-    if n > aleatorio:
-        print("Numero mayor, intenta de nuevo")
+import random
+
+numeroAleatorio = random.randint(1, 50)
+intentoActual = 1
+maxIntentos = 5
+numeroIntroducido = 0
+
+print(numeroAleatorio)
+
+# Creamos n como la variable para que se guarde el numero introducido por el usuario.
+while intentoActual <= maxIntentos:
+    numeroIntroducido = int(input("Intenta adivinar el numero en un rango del 1 al 50: "))
+
+    if numeroIntroducido > numeroAleatorio:
+        print(f"Numero mayor, intenta de nuevo. Te quedan: {maxIntentos - intentoActual}.")
+    elif numeroIntroducido < numeroAleatorio:
+        print(f"Numero menor, intenta de nuevo. Te quedan: {maxIntentos - intentoActual}.")
     else:
-        print("Numero menor, intenta de nuevo")
-#creamos este if para asegurarnos de que el usuario no ponga un numero diferente al rango que se pide.
-#en este if validamos el numero en caso de ser igual al generado aleatoriamente indicando al usuario que ha ganado.
-if n ==aleatorio:
-        print("¡Felicidades, has acertado!")
+        break
 
+    intentoActual += 1
 
-
-
+    # creamos este if para asegurarnos de que el usuario no ponga un numero diferente al rango que se pide.
+    # en este if validamos el numero en caso de ser igual al generado aleatoriamente indicando al usuario que ha ganado.
+if numeroIntroducido == numeroAleatorio:
+    print("¡Felicidades, has acertado!")
