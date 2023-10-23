@@ -8,10 +8,8 @@ for i in range(data):
     n1=int(datos[0])
     n2=int(datos[1])
     #comprobamos que si n2 es mayor que n1, entonces imprime Nope.
-    if n1<n2:
-        print("Nope")
     #en caso de que n1 sea igual a n2, tambien imprime Nope.
-    elif n1==n2:
+    if n1<n2 or n1==n2:
         print("Nope")
     #calculamos el 20% de n1 y ponemos el n2 como el numero del daño
     elif n1*0.2 < n2:
