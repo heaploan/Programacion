@@ -9,12 +9,9 @@ for i in range(data):
     n2=int(datos[1])
     #comprobamos que si n2 es mayor que n1, entonces imprime Nope.
     #en caso de que n1 sea igual a n2, tambien imprime Nope.
-    if n1<n2 or n1==n2:
+    if n1<n2 or n1==n2 or n1*0.2>=n2:
         print("Nope")
     #calculamos el 20% de n1 y ponemos el n2 como el numero del daño
     elif n1*0.2 < n2:
         #en caso de que n2 sea mayor al 20% del numero introducido, se imprimira momento banana.
         print("Momento Banana")
-    else:
-        #cualquier otra cosa que en este caso seria que todo lo que sea 20% o menor, se imprime nope.
-        print("Nope")
