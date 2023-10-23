@@ -19,7 +19,7 @@ while intentoActual <= maxIntentos:
         print(f"Numero menor, intenta de nuevo. Te quedan: {maxIntentos - intentoActual}.")
     #con este else si se acierta se termina el bucle.
     else:
-        break
+        print("Se te acabaron los intentos.")
     #con esta variable se le suma 1 a intentoActual cada vez que se ingresa un número.
     intentoActual += 1
 #Con este if se avisa que se ha adivinado el número aleatorio.
