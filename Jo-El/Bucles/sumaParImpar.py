@@ -1,18 +1,17 @@
-#se pone el numero de casos a calcular
+# Leemos el número de casos de prueba (entrada), que representa cuántos casos vamos a evaluar
 casos=int(input())
-#se crea el rango con la variable casos dentro de este.
+# Iteramos a través de cada caso de prueba
 for i in range(casos):
-    #creamos las variables pares e impares=0 para que se les asigne mas tarde un valor.
-    pares=0
-    impares=0
-    #variable num para crear el rango de los numeros a calcular
+    pares=0  # Inicializamos la variable "pares" para llevar un seguimiento de la suma de números pares
+    impares=0  # Inicializamos la variable "impares" para llevar un seguimiento de la suma de números impares
+    # Leemos un número "num" para este caso
     num=int(input())
-    #metemos el num dentro del rango para hacer las operaciones 
+    # Iteramos a través de los números desde 0 hasta "num" inclusive
     for z in range(num+1):
-        #usamos la variable z que creamos en for ya que toma el valor de num
+        # Comprobamos si el número "z" es par o impar
         if z%2==0:
-            pares+=z
+            pares+=z  # Si es par, agregamos "z" a la suma de números pares
         else:
-            impares+=z
-    #el print lo ponemos a la altura de for para que muestre solo el resultado de las operaciones.        
+            impares+=z  # Si es impar, agregamos "z" a la suma de números impares
+    # Imprimimos las sumas de números pares e impares para este caso
     print(f"PARELLS: {pares} SENARS: {impares}")
