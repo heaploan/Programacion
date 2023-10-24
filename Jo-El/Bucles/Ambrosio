@@ -1,6 +1,5 @@
 # Solicita al usuario un valor de entrada que determinará cuántas veces se repetirá el bucle for.
 entry = int(input())
-
 # Comienza un bucle for que se ejecutará 'entry' veces.
 for i in range(entry):
     # Solicita al usuario un número 'num' en cada iteración del bucle.
