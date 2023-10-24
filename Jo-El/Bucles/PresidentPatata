@@ -1,0 +1,5 @@
+entry=int(input())
+for i in range(entry):
+    repetition=int(input())
+    for z in range(repetition):
+        print("No ofendre al president patata")
