@@ -14,7 +14,6 @@ print(buida)
 #agrega los valores a la lista
 buida.extend([3,4,8])
 print(buida)
-#
 buida.insert(0,8)
 print(buida)
 #pone la lista de mayor a menor
