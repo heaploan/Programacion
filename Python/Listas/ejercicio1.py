@@ -34,11 +34,12 @@ numeros.append(6)
 print(f"La llista numeros: {numeros}")
 #o
 num2=int(input("Introdueix un numero: "))
-z=0
+z = 0
 for i in range(len(numeros)):
-    if num2==numeros[i] and z==1:
-        z+=1
-        print(f"La posicio de {num2} es: {i}")
+    if num2 == numeros[i]:
+        z += 1
+        if z==1:
+            print(f"La posicio de {num2} es: {i}")
 #p
 numeros.sort(reverse=True)
 print(f"La llista numeros: {numeros}")
