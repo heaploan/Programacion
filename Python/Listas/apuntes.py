@@ -1,7 +1,10 @@
+#crear lista vacia
 buida=[]
 print(buida)
+#crear lista con valores numericos
 nums=[1,2,8,0,4,3]
 print(nums)
+#crear lista con valores numericos de texto y variable.
 lista=["Pedro",5.3,6,True]
 print(lista)
 pares=[2,4,6]

@@ -16,7 +16,7 @@ for i in range(5):
         #cada vez que se hace una suma, se añade 1 a p.
         p+=1
         #creamos la variable media para hacer la suma dividido por p que es la cantidad de numeros que hay en lista.
-        media=suma/p
+    media=suma/p
     #creamos la variable maximo con lista en primera posición.
     maximo=lista[0]
     #creamos el for para saber el numero maximo
