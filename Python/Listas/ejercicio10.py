@@ -33,5 +33,4 @@ for i in range(5):
         #se hace la suma de lista en forma vertical, invirtiendo el movimiento poniendo w primero e i segundo
         #w va desplazandose por cada valor y la i cada columna, al poner la w primero, invertimos de horizontal a vertical.
         suma+=lista[w][i]
-    print(suma, end="\t")
-        
+    print(suma, end="\t")     
