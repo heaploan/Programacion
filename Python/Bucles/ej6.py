@@ -14,7 +14,7 @@ while tramo != -1:
     if tramo <= 0 and tramo != -1:
             print("El tramo no puede durar 0 o numeros negativos")
     #Si no a tramos le sumamos 1 y a total_minutos sumamos tramo
-    else:
+    elif tramo != -1:
         tramos += 1
         total_minutos+=tramo
 #Ahora creamos las variables horas y minutos

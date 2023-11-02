@@ -1,7 +1,7 @@
 #creamos input de frase.
 frase=input("Introduce una frase: ")
 #creamos mitad para que coja los valores de frase 
-mitad=" "
+mitad=""
 #creamos variable n con valor de 0
 n = 0
 #creamos for en frase

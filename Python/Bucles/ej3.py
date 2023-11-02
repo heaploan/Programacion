@@ -30,5 +30,8 @@ else:
         #Si esta fuera de rango se mostrara un error
         else:
             print("Numero fuera de rango, no se cuenta el numero.")
-    #Mostramos el numero mayor, menor y la mediana aritmetica
-    print(f"El numero mayor es {mayor}\nEl numero menor es {menor}\nLa mediana aritmetica es {total/cantidad}")
+    if total == 0:
+        print("Todos los numeros son invalidos")
+    else:
+        #Mostramos el numero mayor, menor y la mediana aritmetica
+        print(f"El numero mayor es {mayor}\nEl numero menor es {menor}\nLa mediana aritmetica es {total/cantidad}")
