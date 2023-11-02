@@ -13,7 +13,7 @@ while tramo != -1:
     #Si tramo es menor o igual que 0 y no es igual a -1 mostrara un error
     if tramo <= 0 and tramo != -1:
             print("El tramo no puede durar 0 o numeros negativos")
-    #Si no a tramos le sumamos 1 y a total_minutos sumamos tramo
+    #Si tramos es diferente a -1, a tramos le sumamos 1 y a total_minutos sumamos tramo
     elif tramo != -1:
         tramos += 1
         total_minutos+=tramo
