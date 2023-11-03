@@ -9,6 +9,7 @@ while nom != "*":
         nombres.append(nom)
         edad=int(input("Introduce su edad: "))
         edades.append(edad)
+#una vez se ha terminado de introducir los datos.
 maximo=edades[0]
 mayor=nombres[0]
 print("Alumnos mayores de edad: ")
