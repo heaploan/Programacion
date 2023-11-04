@@ -1,26 +1,27 @@
-longitud=int(input())
-eleccion=0
-contador=0
-inicio=-1
-longitud_sitio=0
-minimo=9000000
-entrada=input()
-while longitud != 0:
-    contador+=1
-    while longitudEspacio != 0:
-        datos=entrada.split()
-        inicio=int(datos[0])
-        final=int(datos[1])
-        if inicio != 0:
-            longitudEspacio=final-inicio
-            if longitudEspacio>longitud*1.5:
-                if minimo > longitudEspacio:
-                    minimo=longitudEspacio
-                    eleccion=contador
-    entrada=input()
-if minimo == 9000000:
-    print("NO")
-else:
-    print(f"SI {eleccion}")
-        
-    
+aparcar = True
+while aparcar:
+    longitudCoche = int(input())
+    mejorPlaza = 0
+    encontradaPlaza = False
+    if longitudCoche == 0:
+        aparcar = False
+    else:
+        buscarPlaza = True
+        contadorPlaza = 0
+        while buscarPlaza:
+            posiblePlaza = input()
+            if posiblePlaza == "0":
+                buscarPlaza = False
+            else:
+                parking = posiblePlaza.split(" ")
+                longitudPlaza = int(parking[1])-int(parking[0])
+                contadorPlaza += 1
+                if (longitudCoche * 1.5) <= longitudPlaza:
+                    if mejorPlaza > longitudPlaza or encontradaPlaza == False:
+                        encontradaPlaza = True
+                        plaza = contadorPlaza
+                        mejorPlaza = longitudPlaza
+        if not encontradaPlaza:
+            print("NO")
+        else:
+            print(f"SI {plaza}")
