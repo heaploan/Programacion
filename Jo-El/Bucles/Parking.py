@@ -52,3 +52,4 @@ while aparcar:
         else:
             #imprimimos SI y la variable plaza (el contenido de esta)
             print(f"SI {plaza}")
+            
