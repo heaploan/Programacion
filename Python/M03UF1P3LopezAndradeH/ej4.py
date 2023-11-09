@@ -30,5 +30,5 @@ for i in range(casos):
                 # Si la actual es igual o más larga, agregamos un espacio.
                 frasePuntos += " "  
      # Imprimimos la frase modificada.
-    print("Frase modificada:", frasePuntos) 
+    print(f"Frase modificada: {frasePuntos}") 
 
