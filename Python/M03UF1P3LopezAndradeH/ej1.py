@@ -17,10 +17,9 @@ print("Llista de numeros")
 for i in conRep:
     # Imprime el valor actual de 'i' seguido de un espacio en la misma línea
     print(i, end=" ")
-
 # Imprime una línea en blanco para separar la lista de números sin repeticiones
 print("\nLlista de numeros sense repeticions")
-#imprimimos la lista sin forma de dicha sino, solo numeros con espacio
+# Itera a través de los elementos en la lista 'sinRep'
 for i in sinRep:
-    #imprimimos i porque es el contenido de la lista sinRep y end para que termine en espacio
+    # Imprime el valor actual de 'i' seguido de un espacio en la misma línea.
     print(i, end=" ")
