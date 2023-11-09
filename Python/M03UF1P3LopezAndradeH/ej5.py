@@ -1,4 +1,5 @@
 casos = int(input("Introdueix el nombre de casos a considerar: "))
+
 for i in range(casos):
     numeros=input().split(" ")
     posicion = 0
