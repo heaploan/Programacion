@@ -54,14 +54,18 @@ while opcion != 6:
             print("La palabra introducida no está en la lista.")
     # Si la opción es 5, el usuario quiere mostrar todas las palabras de la lista.
     elif opcion == 5:
-        lista = "" 
-        # Itera a través de los elementos en la lista 'palabras'
-        for i in palabras:
-        # Asigna el valor actual de 'i' a la variable 'lista'
-            lista = i
-        # Imprime el valor de 'lista' seguido de un tabulador ('\t') en la misma línea
-        print(lista, end="\t")
-        print()
+        # En caso de que la lista este vacia, mostrara este error.
+        if len(palabras) == 0:
+            print("La lista esta vacia, no se pudo imprimir.")
+        else:
+            lista = "" 
+            # Itera a través de los elementos en la lista 'palabras'
+            for i in palabras:
+            # Asigna el valor actual de 'i' a la variable 'lista'
+                lista = i
+            # Imprime el valor de 'lista' seguido de un tabulador ('\t') en la misma línea
+            print(lista, end="\t")
+            print()
     # Pedimos al usuario que elija otra opción antes de volver a evaluar el bucle.
     opcion = int(input("1. Afegir paraula.\n2. Comptar.\n3. Modificar\n4. Eliminar.\n5. Mostrar.\n6. Sortir.\nElige una opción: "))
 # Cuando el usuario elige la opción 6 (Salir), el bucle termina y se muestra un mensaje de despedida.
