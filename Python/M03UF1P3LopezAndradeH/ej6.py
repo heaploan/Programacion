@@ -30,13 +30,14 @@ while opcion != 6:
     elif opcion == 3:
         modificacion = input("Introduce la palabra a modificar: ")
         nuevaPalabra = input("Introduce la nueva palabra: ")
+        # Si la palabra introducida en la variable 'modificacion' se encuentra en la lista entramos en bucle for
         if modificacion in palabras:
             for i in range(len(palabras)):
                 # Si la palabras y su posicion son iguales a la palabra introducida en modificacion
                 if palabras[i] == modificacion:
                     # Reemplazamos la palabra antigua por la nueva.
                     palabras[i] = nuevaPalabra  
-                    print("Palabra modificada.")
+                print("Palabra modificada.")
         else:
             # En caso de que la palabra no se encuentre en la lista.
             print("La palabra introducida no está en la lista.")
@@ -49,24 +50,26 @@ while opcion != 6:
             while eliminar in palabras:
                 # Eliminamos todas las instancias de la palabra. 
                 palabras.remove(eliminar)
-                print("Palabra eliminada.")
+            print("Palabra eliminada.")
         else:
             print("La palabra introducida no está en la lista.")
     # Si la opción es 5, el usuario quiere mostrar todas las palabras de la lista.
     elif opcion == 5:
-        # En caso de que la lista este vacia, mostrara este error.
-        if len(palabras) == 0:
-            print("La lista esta vacia, no se pudo imprimir.")
-        else:
+        if palabras != []:
             lista = "" 
-            # Itera a través de los elementos en la lista 'palabras'
+                # Itera a través de los elementos en la lista 'palabras'
             for i in palabras:
-            # Asigna el valor actual de 'i' a la variable 'lista'
+                # Asigna el valor actual de 'i' a la variable 'lista'
                 lista = i
-            # Imprime el valor de 'lista' seguido de un tabulador ('\t') en la misma línea
-            print(lista, end="\t")
+                # Imprime el valor de 'lista' seguido de un tabulador ('\t') en la misma línea
+                print(lista, end="\t")
             print()
+        else:
+            print("Error, la lista está vacía.")
+    else:
+        # En caso de no ser ninguna de las opciones, mostrar este mensaje de error. 
+        print("Opcion incorrecta, introduce alguna de las que estan en el menú.")
     # Pedimos al usuario que elija otra opción antes de volver a evaluar el bucle.
-    opcion = int(input("1. Afegir paraula.\n2. Comptar.\n3. Modificar\n4. Eliminar.\n5. Mostrar.\n6. Sortir.\nElige una opción: "))
+    opcion = int(input("1. Afegir paraula.\n2. Comptar.\n3. Modificar\n4. Eliminar.\n5. Mostrar.\n6. Sortir.\nElige una opción con el numero: "))
 # Cuando el usuario elige la opción 6 (Salir), el bucle termina y se muestra un mensaje de despedida.
 print("¡Hasta luego!")
