@@ -2,7 +2,7 @@ import time
 
 # Els caràcters valids a la contrassenya
 validCharacters = "1234567890"
-maxCharacters=4
+maxCharacters=8
 
 
 # L'usuari introdueix un número que el programa hackejarà per força bruta.
@@ -83,7 +83,7 @@ if not heEncertat:
             for ch3 in validCharacters:
                 for ch4 in validCharacters:
                     numPasswordsTried +=1
-                    guess = ch1 + ch2 + ch3 +ch4
+                    guess = ch1 + ch2 + ch3 +ch4 
                     print(guess)
                     if guess == passwordToGuess:
                         heEncertat = True
