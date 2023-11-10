@@ -18,8 +18,3 @@ for i in range(casos):
                 rondas_twitch += 1
                 if hp <= 0:
                         print(f"TWITCH {rondas_twitch}")
-                        
-
-
-            
-
