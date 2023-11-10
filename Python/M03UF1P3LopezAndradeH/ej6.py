@@ -37,7 +37,7 @@ while opcion != 6:
                 if palabras[i] == modificacion:
                     # Reemplazamos la palabra antigua por la nueva.
                     palabras[i] = nuevaPalabra  
-                print("Palabra modificada.")
+            print("Palabra modificada.")
         else:
             # En caso de que la palabra no se encuentre en la lista.
             print("La palabra introducida no está en la lista.")
