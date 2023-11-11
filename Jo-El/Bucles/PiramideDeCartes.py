@@ -10,13 +10,9 @@ for i in range(casos):
         cartasUsadas += piso * 2 + piso - 1 
         menos = piso * 2 + piso - 1
         cartas -= menos
-        
-    print(piso, cartasTotales-cartasUsadas)
-# 2
-# 1
-# 4
-# 2
-# 6
-# 3
-# 8
-# 4
+    if cartasTotales == cartasUsadas:
+        print(piso, cartasTotales-cartasUsadas)
+    else:
+        cartasUsadas -= piso * 2 + piso - 1
+        piso -= 1
+        print(piso, cartasTotales-cartasUsadas)
