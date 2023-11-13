@@ -18,4 +18,4 @@ for i in range(casos):
             # Si es el primer número, aumenta 'posicion' en 1 para indicar que ya hemos pasado el primer número.
             posicion += 1  
         # Imprime el valor acumulado de 'suma' en cada iteración.
-        print(suma)  
+    print(suma)  
