@@ -41,20 +41,33 @@ while opcion != 6:
         else:
             mostrar = input("Introdueix el nom del personatge a mostrar: ")
             if mostrar in personajes:
-                for mostrar in personajes:
-                    print(f"Nom: {mostrar}")
-                    for dada in personajes[mostrar]:
-                        print(dada, personajes[personaje][dada], end=" ")
-                    print()
+                print(f"Nom: {mostrar}")
+                for atributo, valor in personajes[mostrar].items():
+                    print(f"{atributo}: {valor}", end=" ")
+                print()
             else:
                 print("Error: presonatge no trobat.")
 
     elif opcion == 4:
-        
-        print("a")
+        if personajes == {}:
+            print("Error: no hay personajes para mostrar.")
+        else:
+            for personaje, datos in personajes.items():
+                print(f"\nNom: {personaje}")
+                for atributo, valor in datos.items():
+                    print(f"{atributo}: {valor}", end=" ")
+
     elif opcion == 5:
-        print("a")
+        mostrarTipus = input("Introdueix el tupos a mostrar: ")
+        if mostrarTipus not in ["mag", "guerrer"]:
+            print("Error: tipus no valid.")
+        else: 
+            for personaje, datos in personajes.items():
+                if datos["Tipus"] == mostrarTipus:
+                    print(f"\nNom: {personaje}")
+                    for atributo, valor in datos.items():
+                        print(f"{atributo}: {valor}", end=" ")
+
     else:
-        print("Opcion incorrecta, introduce alguna de las que estan en el menú.")
-    
-    opcion = int(input("1. Afegir personatge\n2. Esborrar personatge.\n3. Mostrar personatge\n4. Mostrar totes les dades de tots els personatges.\n5. Mostrar les dades d'un tipus de personatge\n6. Sortir.\nTria una opció: "))
+        print("Opcion incorrecta, introduce alguna de las que estan en el menú.")  
+    opcion = int(input("\n1. Afegir personatge\n2. Esborrar personatge.\n3. Mostrar personatge\n4. Mostrar totes les dades de tots els personatges.\n5. Mostrar les dades d'un tipus de personatge\n6. Sortir.\nTria una opció: "))
