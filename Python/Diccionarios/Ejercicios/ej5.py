@@ -94,6 +94,5 @@ while opcion != 6:
     # Opción inválida.
     else:
         print("Opcion incorrecta, introduce alguna de las que estan en el menú.")
-
     # Solicitar nuevamente al usuario que elija una opción del menú.
     opcion = int(input("\n1. Afegir personatge\n2. Esborrar personatge.\n3. Mostrar personatge\n4. Mostrar totes les dades de tots els personatges.\n5. Mostrar les dades d'un tipus de personatge\n6. Sortir.\nTria una opció: "))
