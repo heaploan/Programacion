@@ -76,21 +76,33 @@ while opcion != 6:
                 print(f"\nNom: {personaje}")
                 for atributo, valor in datos.items():
                     print(f"{atributo}: {valor}", end=" ")
+                print()
+                print("------------------------------------------------------------------")
     # Opción 5: Mostrar información de un tipo específico de personaje.
     elif opcion == 5:
-        # Solicitar al usuario el tipo de personaje a mostrar.
-        mostrarTipus = input("Introdueix el tipus a mostrar: ")
-        mostrarTipus = mostrarTipus.lower()
-        # Verificar si el tipo ingresado es válido.
-        if mostrarTipus not in ["mag", "guerrer"]:
-            print("Error: tipus no valid.")
-        else:
-            # Iterar sobre cada personaje y mostrar solo los del tipo especificado.
-            for personaje, datos in personajes.items():
-                if datos["Tipus"] == mostrarTipus:
-                    print(f"\nNom: {personaje}")
-                    for atributo, valor in datos.items():
-                        print(f"{atributo}: {valor}", end=" ")
+        # Verificar si no hay personajes en la lista. 
+        if personajes == {}:
+            print("Error: no se ha trobat cap personatge.")
+        else: 
+            # Solicitar al usuario el tipo de personaje a mostrar.
+            mostrarTipus = input("Introdueix el tipus a mostrar: ")
+            mostrarTipus = mostrarTipus.lower()
+            # Verificar si el tipo ingresado es válido.
+            if mostrarTipus not in ["mag", "guerrer"]:
+                print("Error: tipus no valid.")
+            else:
+                encontrado = False
+                # Iterar sobre cada personaje y mostrar solo los del tipo especificado.
+                for personaje, datos in personajes.items():
+                    if datos["Tipus"] == mostrarTipus:
+                        encontrado = True
+                        print(f"\nNom: {personaje}")
+                        for atributo, valor in datos.items():
+                            print(f"{atributo}: {valor}", end=" ")
+                        print()
+                        print("------------------------------------------------------------------")
+                if not encontrado:
+                    print(f"No hay cap personatge del tipus {mostrarTipus}")
     # Opción inválida.
     else:
         print("Opcion incorrecta, introduce alguna de las que estan en el menú.")
