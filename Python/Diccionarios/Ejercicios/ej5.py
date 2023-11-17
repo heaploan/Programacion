@@ -91,16 +91,19 @@ while opcion != 6:
             if mostrarTipus not in ["mag", "guerrer"]:
                 print("Error: tipus no valid.")
             else:
+                # Variable booleana para rastrear si se ha encontrado al menos un personaje del tipo especificado.
                 encontrado = False
                 # Iterar sobre cada personaje y mostrar solo los del tipo especificado.
                 for personaje, datos in personajes.items():
                     if datos["Tipus"] == mostrarTipus:
+                        # Se encontró al menos un personaje del tipo especificado
                         encontrado = True
                         print(f"\nNom: {personaje}")
                         for atributo, valor in datos.items():
                             print(f"{atributo}: {valor}", end=" ")
                         print()
                         print("------------------------------------------------------------------")
+                # Si no se encontraron personajes del tipo especificado, imprimir un mensaje.
                 if not encontrado:
                     print(f"No hay cap personatge del tipus {mostrarTipus}")
     # Opción inválida.
