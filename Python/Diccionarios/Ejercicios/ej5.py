@@ -12,7 +12,7 @@ while opcion != 6:
         personaje = input("Introdueix el nom del personatge: ")
         # Verificar si el personaje ya está en la lista.
         if personaje in personajes:
-            print("Error: El personaje ya está en la lista.")
+            print("Error: El nom del personatge ja està registrat")
         else:
             # Recopilar información sobre el personaje.
             data["Força"] = int(input("Introdueix la seva força: "))
@@ -32,7 +32,7 @@ while opcion != 6:
                 data["Mana"] = int(input("Introdueix el valor del mana: "))
             # Agregar el personaje al diccionario 'personajes'.
             personajes[personaje] = data
-            print("Personaje añadido correctamente")
+            print("Personatge afegit correctament")
     # Opción 2: Eliminar un personaje.
     elif opcion == 2:
         # Verificar si no hay personajes en la lista.
@@ -46,9 +46,9 @@ while opcion != 6:
                 # Elimina el personaje con la clave 'eliminar' del diccionario 'personajes'
                 # Busca el nombre que se introduzca para eliminar todos los datos de dicho personaje.
                 personajes.pop(eliminar)
-                print("Personaje eliminado correctamente.")
+                print("Personatge eliminat correctament.")
             else:
-                print("Error: personaje no encontrado")
+                print("Error: no s'ha trobat el personatge")
     # Opción 3: Mostrar información de un personaje específico.
     elif opcion == 3:
         # Verificar si no hay personajes en la lista.
@@ -64,12 +64,12 @@ while opcion != 6:
                     print(f"{atributo}: {valor}", end=" ")
                 print()
             else:
-                print("Error: personatge no trobat.")
+                print("Error: no s'ha trobat el personatge")
     # Opción 4: Mostrar todas las características de todos los personajes.
     elif opcion == 4:
         # Verificar si no hay personajes en la lista.
         if personajes == {}:
-            print("Error: no hay personajes para mostrar.")
+            print("Error: no s'ha trobat cap personatge.")
         else:
             # Iterar sobre cada personaje y sus atributos.
             for personaje, datos in personajes.items():
@@ -82,7 +82,7 @@ while opcion != 6:
     elif opcion == 5:
         # Verificar si no hay personajes en la lista. 
         if personajes == {}:
-            print("Error: no se ha trobat cap personatge.")
+            print("Error: no s'ha trobat cap personatge.")
         else: 
             # Solicitar al usuario el tipo de personaje a mostrar.
             mostrarTipus = input("Introdueix el tipus a mostrar: ")
@@ -105,7 +105,7 @@ while opcion != 6:
                         print("------------------------------------------------------------------")
                 # Si no se encontraron personajes del tipo especificado, imprimir un mensaje.
                 if not encontrado:
-                    print(f"No hay cap personatge del tipus {mostrarTipus}")
+                    print(f"No hi ha cap personatge del tipus {mostrarTipus}")
     # Opción inválida.
     else:
         print("Opcion incorrecta, introduce alguna de las que estan en el menú.")
