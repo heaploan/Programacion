@@ -88,6 +88,7 @@ while opcion != 6:
     elif opcion == 5:
         # Solicitar al usuario el tipo de personaje a mostrar.
         mostrarTipus = input("Introdueix el tipus a mostrar: ")
+        mostrarTipus = mostrarTipus.lower()
         # Verificar si el tipo ingresado es válido.
         if mostrarTipus not in ["mag", "guerrer"]:
             print("Error: tipus no valid.")
