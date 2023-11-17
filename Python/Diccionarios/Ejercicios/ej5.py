@@ -50,6 +50,8 @@ while opcion != 6:
             eliminar = input("Introdueix el nom del personatge a esborrar: ")
             # Verificar si el personaje a eliminar existe y eliminarlo.
             if eliminar in personajes:
+                # Elimina el personaje con la clave 'eliminar' del diccionario 'personajes'
+                # Busca el nombre que se introduzca para eliminar todos los datos de dicho personaje.
                 personajes.pop(eliminar)
                 print("Personaje eliminado correctamente.")
             else:
