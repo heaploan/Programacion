@@ -10,3 +10,4 @@ if 1 < num < 21:
 #Si la condicion no se cumple mostrara este mensaje de error
 else:
     print("El numero que has introducido esta fuera del rango (2-20)")
+ 
