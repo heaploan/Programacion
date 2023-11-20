@@ -22,7 +22,7 @@ while opcion != 6:
             data["Tipus"] = tipus.lower()
             # Validar que el tipo sea 'mag' o 'guerrer'.
             while data["Tipus"] != "mag" and data["Tipus"] != "guerrer":
-                print("Error: solsament pot ser mag o gerrer")
+                print("Error: solsament pot ser mag o guerrer")
                 tipus = input("Introdueix el tipus mag o guerrer: ")
                 data["Tipus"] = tipus.lower()
             # Solicitar información adicional según el tipo de personaje.
