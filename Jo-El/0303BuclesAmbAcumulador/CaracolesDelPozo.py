@@ -6,16 +6,15 @@ for i in range(entry):
     bajada = int(data[2])
     metrosSubidos = 0
     dias = 0
-    if profundidad > 0:
-        if subida <= bajada:
+    if subida <= bajada and subida != profundidad and profundidad > 0:
+        print("NO")
+    else: 
+        while metrosSubidos < profundidad:
+            dias += 1
+            metrosSubidos += subida
+            if metrosSubidos < profundidad:
+                metrosSubidos -= bajada
+        if metrosSubidos < 0:
             print("NO")
-        else: 
-            while metrosSubidos < profundidad:
-                dias += 1
-                metrosSubidos += subida
-                if metrosSubidos < profundidad:
-                    metrosSubidos -= bajada
-            if metrosSubidos < 0:
-                print("NO")
-            else:
-                print(dias)
+        else:
+            print(dias)
