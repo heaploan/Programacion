@@ -1,44 +1,27 @@
-# Obtener el número de casos de prueba
+# Definir las vocales y obtener el número de casos del usuario
+vocales = "aeiou"
 casos = int(input())
-# Iterar a través de cada caso de prueba
-for z in range(casos):
-    # Leer la frase y convertirla a minúsculas
-    frase = input().lower()
+# Iterar a través de cada caso
+for i in range(casos):
     # Inicializar contadores para cada vocal
-    a = 0
-    e = 0
-    i = 0
-    o = 0
-    u = 0
-    # Contar la frecuencia de cada vocal en la frase
-    for vocal in frase:
-        if vocal == "a":
-            a += 1
-        elif vocal == "e":
-            e += 1
-        elif vocal == "i":
-            i += 1
-        elif vocal == "o":
-            o += 1
-        elif vocal == "u":
-            u += 1
-    # Inicializar la vocal ganadora y su frecuencia
-    ganadora = "a"
-    frecuencia = a
-    # Comparar la frecuencia de cada vocal
-    if e > frecuencia:
-        ganadora = "e"
-        frecuencia = e
-    if i > frecuencia:
-        ganadora = "i"
-        frecuencia = i
-    if o > frecuencia:
-        ganadora = "o"
-        frecuencia = o
-    if u > frecuencia:
-        ganadora = "u"
-        frecuencia = u
-    # Imprimir la vocal ganadora para el caso actual
-    print(f"Vocal guanyadora: {ganadora}")
-
-    
+    contadores = [0, 0, 0, 0, 0]
+    # Obtener la frase del usuario
+    frase = input()
+    # Iterar a través de cada letra en la frase
+    for letra in frase:
+        # Verificar si la letra es una vocal
+        if letra in vocales:
+            # Obtener la posición de la vocal en el conjunto de vocales
+            posicio = vocales.find(letra)        
+            # Incrementar el contador correspondiente a la vocal encontrada
+            contadores[posicio] += 1
+    # Encontrar la vocal con la mayor frecuencia
+    maximo = 0
+    posicionMaxima = 0
+    # Iterar a través de los contadores para encontrar la vocal ganadora
+    for i in range(len(contadores)):
+        if contadores[i] > maximo:
+            maximo = contadores[i]
+            posicionMaxima = i
+    # Imprimir la vocal ganadora para la frase actual
+    print("Vocal guanyadora:", vocales[posicionMaxima])
