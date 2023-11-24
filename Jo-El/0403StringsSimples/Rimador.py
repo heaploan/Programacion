@@ -5,8 +5,7 @@ for i in range(casos):
     # Para cada caso, solicitamos al usuario que ingrese dos frases separadas por una coma
     frases = input().split(",")
     # Almacenamos cada frase por separado
-    frase1 = frases[0]
-    frase2 = frases[1]
+    frase1, frase2 = frases[0], frases[1]
     # Comparamos las longitudes de ambas frases y asignamos el tamaño mínimo a la variable 'tamaño'
     if len(frase1) > len(frase2):
         tamaño = len(frase2)
@@ -18,7 +17,6 @@ for i in range(casos):
     j = 0
     # Inicializamos una bandera 'seguir' que determinará si continuamos buscando la rima
     seguir = True
-    
     # Iniciamos un bucle while que se ejecutará mientras 'seguir' sea True
     while seguir:
         # Comparamos los caracteres en la posición correspondiente desde el final de ambas frases
