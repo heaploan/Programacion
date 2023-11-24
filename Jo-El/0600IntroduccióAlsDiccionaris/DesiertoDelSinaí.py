@@ -3,12 +3,9 @@ casos = int(input())
 # Iterar a través de cada caso
 for i in range(casos):
     # Leer el número de votos para el caso actual
-    votos = int(input())
     # Inicializar un diccionario para contar los votos de cada mapa
-    diccionario = {}
     # Inicializar variables para el ganador y la cantidad máxima de votos
-    ganador = ""
-    maxVotos = 0
+    votos, diccionario, ganador, maxVotos = int(input()), {}, "", 0
     # Iterar a través de cada voto
     for j in range(votos):
         # Leer el nombre del mapa para el voto actual
@@ -20,7 +17,6 @@ for i in range(casos):
             diccionario[mapa] = 1
         # Actualizar el ganador y la cantidad máxima de votos si es necesario
         if diccionario[mapa] > maxVotos:
-            maxVotos = diccionario[mapa]
-            ganador = mapa
+            maxVotos, ganador = diccionario[mapa], mapa
     # Imprimir el nombre del mapa ganador para el caso actual
     print(ganador)
