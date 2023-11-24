@@ -1,6 +1,5 @@
 # Pedir al usuario que ingrese el número de casos
 casos = int(input())
-
 # Inicializar una lista para almacenar las líneas de texto
 lineas = []
 # Ingresar las líneas de texto según el número de casos
