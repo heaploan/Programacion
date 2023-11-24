@@ -20,7 +20,7 @@ for i in range(casos):
     # Imprimir el contenido del diccionario en formato {key1=value1, key2=value2, ...}
     print("{", end="")
     first_item = True
-    for key, value in diccionario.items():
+    for key, value in sorted(diccionario.items()):
         if not first_item:
             print(", ", end="")
         print(f"{key}={value}", end="")
