@@ -1,9 +1,7 @@
 # Se crea un diccionario vacío para almacenar los módulos y las notas de las unidades formativas (UF).
 moduls = {}
-
 # Se lee la opción del usuario desde la entrada estándar.
 opcion = int(input("*** Expedient acadèmic ***\n1. Alta de mòdul\n2. Alta de nota d'unitat formativa\n3. Veure dades del mòdul\n4. Percentatge aprovat\n5. Sortir\nIndica una opció: "))
-
 # Se inicia un bucle while que continuará hasta que el usuario seleccione la opción 5 (Salir).
 while opcion != 5:
     # Se verifica la opción seleccionada por el usuario y se ejecuta la acción correspondiente.
