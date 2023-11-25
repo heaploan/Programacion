@@ -7,19 +7,22 @@ while opcion != 5:
         modul = input("Introdueix el nom del mòdul: ")
         if modul in moduls:
             print("Error: El nom mòdul ja està registrat.")
-        moduls[modul] = modul
-        print("Mòdul afegit correctament")
+        else:
+            moduls[modul] = modul
+            print("Mòdul afegit correctament")
     elif opcion == 2:
         if moduls == {}:
             print("ERROR: no s'ha trobat cap modul.")
         else: 
-            nomUF = input("Introdueix el nom de la UF: ")
-            if nomUF in ufs:
-                print("ERROR: la UF ja està registrada.")
-            else:
-                ufs[nomUF] = nomUF
-                ufs["Nota"] = int(input("Introdueix la nota de la UF: "))
-            moduls[modul] = ufs
+            nomModul = input("Introdueix el nom del mòdul: ")
+            if nomModul in moduls:
+                nomUF = input("Introdueix el nom de la UF: ")
+                if nomUF in ufs:
+                    print("ERROR: la UF ja està registrada.")
+                else:
+                    ufs[nomUF] = nomUF
+                    ufs["Nota"] = int(input("Introdueix la nota de la UF: "))
+                moduls[modul] = ufs
             print("UF i nota registrades correctament.")
     elif opcion == 3:
         if moduls == {}:
