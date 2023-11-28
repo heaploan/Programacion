@@ -1,3 +1,5 @@
+# Recibe un parámetro en forma de número
+# Comprueba si es un numero primo o no.
 def calculo(num):
     for n in range(2, num):
         if num % n == 0:
