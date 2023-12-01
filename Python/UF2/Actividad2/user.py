@@ -1,4 +1,7 @@
-import datetime # Los imports siempre se ponen al principio del documento
+# Los imports siempre se ponen al principio del documento
+import datetime 
+
+# a)
 # Creamos una función para validar una edad que se le pide al usuario
 # Si la edad está dentro del rango mencionado, devuelve la edad.
 def validarEdad():
@@ -7,6 +10,8 @@ def validarEdad():
         print("Edad incorrecta, ingresa una dentro del rango")
         age = int(input("Introduce tu edad: "))
     return age
+
+# b)
 # Creamos una funcion para validar que el usuario es de la longitud adecuada
 # y si la llave tiene al menos una vocal y su longitud es al menos de 6 digitos.
 def validarUsuario(user, key):
@@ -34,6 +39,8 @@ def validarUsuario(user, key):
             return True
         else:
             return False
+
+# c)
 # creamos una variable donde pedimos la fecha de nacimiento y la mostramos en formato dd/mm/yyyy
 # para el formato importamos la librería de datetime
 def demanarNaixament():
@@ -54,6 +61,9 @@ def demanarNaixament():
     
     return datetime.date(any, mes, dia).strftime("%d/%m/%y")
 
+# d)
+# Creamos una funcion que recibirá tres valores
+# Se comprobará que el usuario y la clave correspondan a un usuario del diccionario.
 def login(diccionario, usuario, key):
     if usuario in diccionario:
         if diccionario[usuario] == key:
