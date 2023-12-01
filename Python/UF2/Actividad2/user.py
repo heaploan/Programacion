@@ -1,4 +1,4 @@
-from datetime import date # Los imports siempre se ponen al principio del documento
+import datetime # Los imports siempre se ponen al principio del documento
 # Creamos una función para validar una edad que se le pide al usuario
 # Si la edad está dentro del rango mencionado, devuelve la edad.
 def validarEdad():
@@ -52,7 +52,7 @@ def demanarNaixament():
         print("ERROR: año incorrecto, introduce uno dentro del rango.")
         any = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
     
-    return date(any, mes, dia).strftime("%d/%m/%y")
+    return datetime.date(any, mes, dia).strftime("%d/%m/%y")
 
 def login(diccionario, usuario, key):
     if usuario in diccionario:
