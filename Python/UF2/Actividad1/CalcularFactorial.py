@@ -12,3 +12,11 @@ def CalcularFactorial(num1):
 
 resultado = CalcularFactorial(0)
 print(resultado)
+
+
+# Se puede hacer de otra forma y es recursiva, aqui un ejemplo
+"""def factorial(n):
+    if n == 1:
+        return 1
+    resultat = n * factorial(n - 1)
+    return resultat"""
