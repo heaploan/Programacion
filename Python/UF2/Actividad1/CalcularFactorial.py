@@ -4,11 +4,10 @@
 def CalcularFactorial(num1):
     if num1 < 0:
         return 1
-    else: 
-        factorial = 1
-        for i in range(1, num1 + 1):
-            factorial *= i
-        return factorial
+    factorial = 1
+    for i in range(1, num1 + 1):
+        factorial *= i
+    return factorial
 
 resultado = CalcularFactorial(0)
 print(resultado)
