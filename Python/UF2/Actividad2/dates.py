@@ -26,4 +26,5 @@ def properAniversari(date):
     mesActual = datetime.date.today().month
     añoActual = datetime.date.today().year
     if diaActual >= dia and mesActual >= mes:
-        
+        añoActual += 1
+    return (f"El proper aniversari es {datetime.date(añoActual, mes, dia).strftime("%d/%m/%Y")}")
