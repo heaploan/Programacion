@@ -19,12 +19,14 @@ def avui():
 # miraremos cuanto falta para el proximo cumpleaños
 def properAniversari(date):
     date = date.split("/")
-    dia = date[0]
-    mes = date[1]
-    año = date[2]
+    dia = int(date[0])
+    mes = int(date[1])
     diaActual = datetime.date.today().day
     mesActual = datetime.date.today().month
     añoActual = datetime.date.today().year
-    if diaActual >= dia and mesActual >= mes:
+    if mesActual > mes or (diaActual >= dia and mesActual >= mes):
         añoActual += 1
     return (f"El proper aniversari es {datetime.date(añoActual, mes, dia).strftime("%d/%m/%Y")}")
+
+# c)
+# 

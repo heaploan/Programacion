@@ -44,22 +44,22 @@ def validarUsuario(user, key):
 # creamos una variable donde pedimos la fecha de nacimiento y la mostramos en formato dd/mm/yyyy
 # para el formato importamos la librería de datetime
 def demanarNaixament():
-    dia = int(input("Introduce tu dia de nacimiento: "))
-    while dia < 0 or dia > 31:
-        print("ERROR: El dia no existe, introduce un día válido.")
-        dia = int(input("Introduce tu dia de nacimiento: "))
+    day = int(input("Introduce tu day de nacimiento: "))
+    while day < 0 or day > 31:
+        print("ERROR: El day no existe, introduce un día válido.")
+        day = int(input("Introduce tu day de nacimiento: "))
 
-    mes = int(input("Introduce el número de tu mes de nacimiento: "))
-    while mes < 1 or mes > 12:
-        print("ERROR: El mes no es correcto, introduce un mes válido")
-        mes = int(input("Introduce el número de tu mes de nacimiento: "))
+    month = int(input("Introduce el número de tu month de nacimiento: "))
+    while month < 1 or month > 12:
+        print("ERROR: El month no es correcto, introduce un month válido")
+        month = int(input("Introduce el número de tu month de nacimiento: "))
 
-    any = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
-    while any < 1900 or any > 2001:
+    year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
+    while year < 1900 or year > 2001:
         print("ERROR: año incorrecto, introduce uno dentro del rango.")
-        any = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
+        year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
     
-    return datetime.date(any, mes, dia).strftime("%d/%m/%y")
+    return datetime.date(year, month, day).strftime("%d/%m/%y")
 
 # d)
 # Creamos una funcion que recibirá tres valores
