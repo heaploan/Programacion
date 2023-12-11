@@ -43,22 +43,29 @@ def validarUsuario(user, key):
 # c)
 # creamos una variable donde pedimos la fecha de nacimiento y la mostramos en formato dd/mm/yyyy
 # para el formato importamos la librería de datetime
+# Comprobamos tambimén que el mes introducido tenga los días introducidos.
 def demanarNaixament():
-    day = int(input("Introduce tu day de nacimiento: "))
-    while day < 0 or day > 31:
-        print("ERROR: El day no existe, introduce un día válido.")
+    meses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    check = True
+    while check:
         day = int(input("Introduce tu day de nacimiento: "))
+        while day < 0 or day > 31:
+            print("ERROR: El day no existe, introduce un día válido.")
+            day = int(input("Introduce tu day de nacimiento: "))
 
-    month = int(input("Introduce el número de tu month de nacimiento: "))
-    while month < 1 or month > 12:
-        print("ERROR: El month no es correcto, introduce un month válido")
         month = int(input("Introduce el número de tu month de nacimiento: "))
+        while month < 1 or month > 12:
+            print("ERROR: El month no es correcto, introduce un month válido")
+            month = int(input("Introduce el número de tu month de nacimiento: "))
 
-    year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
-    while year < 1900 or year > 2001:
-        print("ERROR: año incorrecto, introduce uno dentro del rango.")
-        year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
-    
+        year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
+        while year < 1900 or year > 2001:
+            print("ERROR: año incorrecto, introduce uno dentro del rango.")
+            year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
+        if day <= meses[month -1]:
+            check = False
+        else:
+            print("El mes no tiene tantos días.")
     return datetime.date(year, month, day).strftime("%d/%m/%y")
 
 # d)
@@ -66,7 +73,13 @@ def demanarNaixament():
 # Se comprobará que el usuario y la clave correspondan a un usuario del diccionario.
 def login(diccionario, usuario, key):
     if usuario in diccionario:
-        if diccionario[usuario] == key:
+        if diccionario[usuario]['password'] == key:
             return True
         else:
             return False
+  
+# diccionario = {}
+# usuario = input()
+# diccionario[usuario] = {}
+# contraseña = input()
+# diccionario[usuario]['password'] = contraseña

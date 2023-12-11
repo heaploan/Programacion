@@ -23,10 +23,39 @@ def properAniversari(date):
     mes = int(date[1])
     diaActual = datetime.date.today().day
     mesActual = datetime.date.today().month
-    añoActual = datetime.date.today().year
+    actualYear  = datetime.date.today().year
     if mesActual > mes or (diaActual >= dia and mesActual >= mes):
-        añoActual += 1
-    return (f"El proper aniversari es {datetime.date(añoActual, mes, dia).strftime("%d/%m/%Y")}")
+        actualYear  += 1
+    return (f"El proper aniversari es: {datetime.date(actualYear , mes, dia).strftime("%d/%m/%Y")}")
 
 # c)
-# 
+# Con esta funcion calcularemos cuantos días quedan para el siguiente cumpleaños.
+def quantFalta(fecha):
+    # reemplazamos el texto de la funcion de proper aniersari y nos quedamos solo con la fecha, creando una lista de esta.
+    fecha = properAniversari(fecha).replace("El proper aniversari es: ", "").split("/")
+    # Guardamos en cada posición el día, el mes y el año separado por /
+    day = int(fecha[0])
+    month = int(fecha[1])
+    year = int(fecha[2])
+    # Guardamos los valores del día actual utilizando la funcion con su metodo de today.
+    actualDay = datetime.date.today().day
+    actualMonth = datetime.date.today().month
+    # Si el dia actual es igual al dia y el mes actual es igual al mes, es la fecha indicada!
+    if actualDay == day and actualMonth == month:
+        return "¡Felicidades! Es tu cumpleaños"
+    else:
+        # en caso de no ser así, calculamos los días llamando la libreria de datetime.date especificando el año, mes y dia
+        # restamos eso con el día actual con el metodo .today()    
+        daysLeft = datetime.date(year, month, day) - datetime.date.today()
+        return f"Faltan {daysLeft.days} dias para tu cumpleaños." #ponemos el .days para pedir solo días y que no ponga nada más.
+# d) 
+# En esta función miramos si el mes proporcionado coincide con el mes actual y devolvemos un bool.
+def aniversari(date):
+    date = date.split("/")
+    month = int(date[1])
+    actualMonth = datetime.date.today().month
+    if month == actualMonth:
+        return True
+    else: 
+        return False
+
