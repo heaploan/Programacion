@@ -1,4 +1,7 @@
-from datetime import date # Los imports siempre se ponen al principio del documento
+# Los imports siempre se ponen al principio del documento
+import datetime 
+
+# a)
 # Creamos una función para validar una edad que se le pide al usuario
 # Si la edad está dentro del rango mencionado, devuelve la edad.
 def validarEdad():
@@ -7,6 +10,8 @@ def validarEdad():
         print("Edad incorrecta, ingresa una dentro del rango")
         age = int(input("Introduce tu edad: "))
     return age
+
+# b)
 # Creamos una funcion para validar que el usuario es de la longitud adecuada
 # y si la llave tiene al menos una vocal y su longitud es al menos de 6 digitos.
 def validarUsuario(user, key):
@@ -34,26 +39,31 @@ def validarUsuario(user, key):
             return True
         else:
             return False
+
+# c)
 # creamos una variable donde pedimos la fecha de nacimiento y la mostramos en formato dd/mm/yyyy
 # para el formato importamos la librería de datetime
 def demanarNaixament():
-    dia = int(input("Introduce tu dia de nacimiento: "))
-    while dia < 0 or dia > 31:
-        print("ERROR: El dia no existe, introduce un día válido.")
-        dia = int(input("Introduce tu dia de nacimiento: "))
+    day = int(input("Introduce tu day de nacimiento: "))
+    while day < 0 or day > 31:
+        print("ERROR: El day no existe, introduce un día válido.")
+        day = int(input("Introduce tu day de nacimiento: "))
 
-    mes = int(input("Introduce el número de tu mes de nacimiento: "))
-    while mes < 1 or mes > 12:
-        print("ERROR: El mes no es correcto, introduce un mes válido")
-        mes = int(input("Introduce el número de tu mes de nacimiento: "))
+    month = int(input("Introduce el número de tu month de nacimiento: "))
+    while month < 1 or month > 12:
+        print("ERROR: El month no es correcto, introduce un month válido")
+        month = int(input("Introduce el número de tu month de nacimiento: "))
 
-    any = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
-    while any < 1900 or any > 2001:
+    year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
+    while year < 1900 or year > 2001:
         print("ERROR: año incorrecto, introduce uno dentro del rango.")
-        any = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
+        year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))    
     
-    return date(any, mes, dia).strftime("%d/%m/%y")
+    return datetime.date(year, month, day).strftime("%d/%m/%y")
 
+# d)
+# Creamos una funcion que recibirá tres valores
+# Se comprobará que el usuario y la clave correspondan a un usuario del diccionario.
 def login(diccionario, usuario, key):
     if usuario in diccionario:
         if diccionario[usuario] == key:
