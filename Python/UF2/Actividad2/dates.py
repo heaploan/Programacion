@@ -2,7 +2,7 @@
 import datetime
 # Importamos la biblioteca locale para cambiar el idioma de la date que mostraremos
 import locale
-from datetime import date
+import datetime
 # Para cambiar el idioma de la date usamos la biblioteca de locale
 # se pone primero locale, ponemos setlocale para definirlo
 # dentro del parentesis se pone lo siguiente.
@@ -31,7 +31,7 @@ def properAniversari(date):
 # c)
 # Con esta funcion calcularemos cuantos días quedan para el siguiente cumpleaños.
 def quantFalta(fecha):
-    # reemplazamos el texto de la funcion de proper aniersari y nos quedamos solo con la fecha, creando una lista de esta.
+    # reemplazamos el texto de la funcion de proper aniersari y nos quedamos solo con la fecha, creando una lista de esta dividida por "/".
     fecha = properAniversari(fecha).replace("El proper aniversari es: ", "").split("/")
     # Guardamos en cada posición el día, el mes y el año separado por /
     day = int(fecha[0])
@@ -42,7 +42,7 @@ def quantFalta(fecha):
     actualMonth = datetime.date.today().month
     # Si el dia actual es igual al dia y el mes actual es igual al mes, es la fecha indicada!
     if actualDay == day and actualMonth == month:
-        return "¡Felicidades! Es tu cumpleaños"
+        return "¡Felicidades, Es tu cumpleaños!"
     else:
         # en caso de no ser así, calculamos los días llamando la libreria de datetime.date especificando el año, mes y dia
         # restamos eso con el día actual con el metodo .today()    
@@ -59,3 +59,5 @@ def aniversari(date):
     else: 
         return False
 
+print(properAniversari("13/12/1992"))
+print(quantFalta("13/12/1992"))
