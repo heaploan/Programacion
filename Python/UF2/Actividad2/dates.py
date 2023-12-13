@@ -59,5 +59,3 @@ def aniversari(date):
     else: 
         return False
 
-print(properAniversari("13/12/1992"))
-print(quantFalta("13/12/1992"))
