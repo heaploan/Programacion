@@ -4,7 +4,7 @@ import datetime
 # a)
 # Creamos una función para validar una edad que se le pide al usuario
 # Si la edad está dentro del rango mencionado, devuelve la edad.
-def validarEdad():
+def pedirEdad():
     age = int(input("Introduce tu edad (de 0 a 130): "))
     while age < 0 or age > 130: 
         print("Edad incorrecta, ingresa una dentro del rango")
@@ -44,19 +44,19 @@ def validarUsuario(user, key):
 # creamos una variable donde pedimos la fecha de nacimiento y la mostramos en formato dd/mm/yyyy
 # para el formato importamos la librería de datetime
 # Comprobamos tambimén que el mes introducido tenga los días introducidos.
-def demanarNaixament():
+def pedirNacimiento():
     meses = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
     check = True
     while check:
-        day = int(input("Introduce tu day de nacimiento: "))
-        while day < 0 or day > 31:
+        day = int(input("Introduce tu día de nacimiento: "))
+        while day < 1 or day > 31:
             print("ERROR: El day no existe, introduce un día válido.")
-            day = int(input("Introduce tu day de nacimiento: "))
+            day = int(input("Introduce tu dia de nacimiento: "))
 
-        month = int(input("Introduce el número de tu month de nacimiento: "))
+        month = int(input("Introduce el número de tu mes de nacimiento: "))
         while month < 1 or month > 12:
-            print("ERROR: El month no es correcto, introduce un month válido")
-            month = int(input("Introduce el número de tu month de nacimiento: "))
+            print("ERROR: El month no es correcto, introduce un mes válido")
+            month = int(input("Introduce el número de tu mes de nacimiento: "))
 
         year = int(input("Introduce tu año de nacimiento (entre 1900 y 2001): "))
         while year < 1900 or year > 2001:
@@ -71,9 +71,9 @@ def demanarNaixament():
 # d)
 # Creamos una funcion que recibirá tres valores
 # Se comprobará que el usuario y la clave correspondan a un usuario del diccionario.
-def login(diccionario, usuario, key):
-    if usuario in diccionario:
-        if diccionario[usuario]['password'] == key:
+def login(dictionary, user, key):
+    if user in dictionary:
+        if dictionary[user]['password'] == key:
             return True
         else:
             return False
