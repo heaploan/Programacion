@@ -29,10 +29,20 @@ while options != 4:
             if aniversari(dictionary[user]["birthdate"]):
                 print("¡Es el mes de tu cumpleaños!")
             else:
-                print(quantFalta(dictionary[user]["birthdate"]))
+                print("Este mes no es tu cumpleaños.")
+            print(quantFalta(dictionary[user]["birthdate"]))
         else:
             print("ERROR: El usuario o la contraseña son incorrectos.")
-            
+    
+    elif options == 3:
+        user = input("Introduce el usuario que quieres ver: ")
+        if user in dictionary:
+            print(f"Datos de {user}")
+            print("Edad:", dictionary[user]["age"])
+            print("Próximo cumpleaños:", properAniversari(dictionary[user]["birthdate"]))
+        else:
+            print("ERROR: No existe dicho usuario.")
+
     else:
         print("ERROR: ¡La opción no es correcta!")
 
