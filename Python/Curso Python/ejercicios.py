@@ -46,8 +46,8 @@ if simbolo == '+':
 elif simbolo == '-':
     print('Resta: ', primero - segundo)
 elif simbolo == '*':
-    print('Multiplicación: ', primero * segundo)  # Corregir el error en la multiplicación
+    print('Multiplicación: ', primero * segundo)
 elif simbolo == '/':
-    print('División: ', primero / segundo)  # Corregir el error en la división
+    print('División: ', primero / segundo)
 else:
     print('El símbolo ingresado no es válido')
