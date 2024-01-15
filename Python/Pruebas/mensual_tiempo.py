@@ -10,7 +10,7 @@ def es_bisiesto(year):
     else:
         return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30 ,31]
 
-year1 = 2000
+year1 = 2012
 m_days1 = es_bisiesto(year1)
 api_url1 = f"https://archive-api.open-meteo.com/v1/archive?latitude=41.306&longitude=2.001&start_date={year1}-01-01&end_date={year1}-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Europe%2FBerlin"
 response1 = requests.get(api_url1)
@@ -29,7 +29,7 @@ for i in range(12):
     tempdic1["max"].append(tempMax1)
     tempdic1["min"].append(tempMin1)
 
-year2 = 2020
+year2 = 2023
 m_days2 = es_bisiesto(year2)
 api_url2 = f"https://archive-api.open-meteo.com/v1/archive?latitude=41.306&longitude=2.001&start_date={year2}-01-01&end_date={year2}-12-31&daily=temperature_2m_max,temperature_2m_min,precipitation_sum&timezone=Europe%2FBerlin"
 response2 = requests.get(api_url2)
