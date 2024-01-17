@@ -29,7 +29,10 @@ def startPrestec():
     else:
         print('ERROR: El código no existe.')
     nomAlumne = input('Introduce el nombre del alumno: ')
-    prestecs['Alumne'] = nomAlumne
+    if ' ' in nomAlumne:
+        print('ERROR: Solo hay que introducir un nombre')
+    else:    
+        prestecs['Alumne'] = nomAlumne
     dataPrestec = input('Introduce la fecha de inicio: ')
     prestecs['Prestecs'] = dataPrestec
 
