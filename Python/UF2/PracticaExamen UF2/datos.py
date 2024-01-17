@@ -13,7 +13,10 @@ def addLlibre():
     genere = input('Introduce el género: ')
     libros['genere'] = genere
     numDePaginas = input('Introduce el número de páginas: ')
-    libros['páginas'] = numDePaginas
+    if numDePaginas > 0:
+        libros['páginas'] = numDePaginas
+    else:
+        print('Error: El numero de paginas no puede ser 0 o menor.')
     
 addLlibre()
 print(libros)
@@ -25,7 +28,10 @@ def startPrestec():
     else:
         print('ERROR: El código no existe.')
     nomAlumne = input('Introduce el nombre del alumno: ')
-    prestecs['Alumne'] = nomAlumne
+    if ' ' in nomAlumne:
+        print('ERROR: Solo hay que introducir un nombre')
+    else:    
+        prestecs['Alumne'] = nomAlumne
     dataPrestec = input('Introduce la fecha de inicio: ')
     prestecs['Prestecs'] = dataPrestec
 
