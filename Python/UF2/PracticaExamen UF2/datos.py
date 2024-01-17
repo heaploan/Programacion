@@ -14,7 +14,6 @@ def addLlibre():
     libros['genere'] = genere
     numDePaginas = input('Introduce el número de páginas: ')
     libros['páginas'] = numDePaginas
-    return libros
     
 addLlibre()
 print(libros)
