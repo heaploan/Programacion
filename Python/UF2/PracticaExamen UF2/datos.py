@@ -13,7 +13,10 @@ def addLlibre():
     genere = input('Introduce el género: ')
     libros['genere'] = genere
     numDePaginas = input('Introduce el número de páginas: ')
-    libros['páginas'] = numDePaginas
+    if numDePaginas > 0:
+        libros['páginas'] = numDePaginas
+    else:
+        print('ERROR: La cantidad de páginas no puede ser menor a 1')
     return libros
     
 addLlibre()
