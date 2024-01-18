@@ -21,6 +21,7 @@ def addLlibre():
     else:
         print('ERROR: La cantidad de páginas no puede ser menor a 1')
         return
+    print('Llibre agregat correctament.')
     
 def startPrestec():
     codiDelLlibre = input('Introduce el código del libro: ')
@@ -33,3 +34,4 @@ def startPrestec():
         print('ERROR: Solo hay que introducir un nombre')
     else:    
         prestecs['Alumne'] = nomAlumne
+    
