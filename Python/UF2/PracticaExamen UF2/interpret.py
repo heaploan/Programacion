@@ -16,11 +16,23 @@ def addLlibre(command):
 def startPrestec(command):
     if len(command) == 4:
         if not checkBooks(command[1]):
-            d, m, y = command[3].split('/')
-            if d.isdigit() and m.isdigit() and y.isdigit() and 0 < int(d) < 32 and 0 < int(m) < 13 and int(y) > 0:
-                return
+            if checkLendings(command[1]):
+                d_m_y = command[3].split('/')
+                d = d_m_y[0]
+                m = d_m_y[1]
+                y = d_m_y[2]
+                if d.isdigit() and m.isdigit() and y.isdigit() and 0 < int(d) < 32 and 0 < int(m) < 13 and int(y) > 0:
+                    d = int(d)
+                    m = int(m)
+                    y = int(y)
+                    iniciPrestec = dt.date(y,m,d)
+                    fiPrestec = iniciPrestec + dt.timedelta(days=15)
+                    lendingsUpdate(command[1],command[2],iniciPrestec,fiPrestec)
+                    print("Prestec registrat. El llibre s'ha de retornar:",fiPrestec)
+                else:
+                    print('ERROR: Data incorrecte')
             else:
-                print('ERROR: Data incorrecte')
+                print("ERROR: No es pot registrar el préstec d'un llibre que ja està en préstec.")  
         else:
             print('ERROR: No hi ha cap llibre registrat')
     else:
