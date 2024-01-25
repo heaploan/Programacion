@@ -37,3 +37,24 @@ def startPrestec(command):
             print('ERROR: No hi ha cap llibre registrat')
     else:
         print("ERROR: nº d'arguments incorrecte")
+
+#TO DO 
+def endPrestec(command):
+
+#TO DO 
+def listLlibres(command):
+    
+#TO DO
+def listPresteces(command):
+
+#TO DO 
+def listGenere(command):
+
+#TO DO
+def maxLlibre(command):
+
+#TO DO 
+def stats(command):
+
+#TO DO
+def info(command):

@@ -3,6 +3,7 @@ from datetime import datetime # para no tener que poner datetime.datetime
 
 books = {}
 lendings = {}
+students = {}
 
 def checkBooks(code):
    if code in books:
@@ -26,3 +27,11 @@ def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
     lendings[code[1]] = {'Alumne': alumne[2], 
                         'Inici': iniciPrestec, 
                         'Fi': fiPrestec}
+    students[alumne] = {'incidences': 0
+                        }
+
+def esBisiesto(year):
+    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
+        return True
+    else:
+        return False
