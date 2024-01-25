@@ -34,5 +34,6 @@ def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
                         'Fi': fiPrestec}
     students[alumne] = {'incidences': 0
                         }
-
+#TO DO 
+#Checkar si la fiecha de inicio de prestamo es anterior a la actual o posterior a la fecha de fin de prestamo
 def checkDate(code, iniciPrestec, fiPrestec):
