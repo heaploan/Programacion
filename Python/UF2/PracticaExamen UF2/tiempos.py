@@ -3,6 +3,7 @@ from biblioteca import *
 fechaActual = datetime.today()
 # Para darle el formato de dia-mes-año y no salgan las horas
 fechaActual2 = datetime.strftime(fechaActual,'%Y-%m-%d')
+print(fechaActual2)
 diaActual = datetime.today().day
 mesActual = datetime.today().month
 añoActual = datetime.today().year

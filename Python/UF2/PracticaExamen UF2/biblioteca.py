@@ -15,12 +15,17 @@ def booksUpdate(code, title, author, genre, numPag):
     books[code] = {'titol': title,
                       'autor': author,
                       'genere': genre,
-                      'pags': int(numPag)}
+                      'pags': int(numPag),
+                      #TO DO
+                      'ESTAT': "disponible"
+                    }
     
 def checkLendings(code):
     if code in lendings:
+        books[code]['ESTAT'] = "en préstec"
         return False
     else:
+        books[code]['ESTAT'] = "disponible"
         return True
 
 def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
@@ -30,8 +35,4 @@ def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
     students[alumne] = {'incidences': 0
                         }
 
-def esBisiesto(year):
-    if year % 4 == 0 and year % 100 != 0 or year % 400 == 0:
-        return True
-    else:
-        return False
+def checkDate(code, iniciPrestec, fiPrestec):

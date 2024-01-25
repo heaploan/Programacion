@@ -40,10 +40,24 @@ def startPrestec(command):
 
 #TO DO 
 def endPrestec(command):
+    if len(command) == 3:
+    #El libro tiene que existir y estar en prestamo para poderse regresar
+        if checkLendings(command[1]):
+    #La fecha de regreso no puede ser antarior a la fecha del inicio del prestamo.
+        
+    #Si la fecha de regreso es posterior a la registrada, se tendrá que registrar una incidencia
+
+    #Registrar que un libro se regresa a la biblioteca por tanto queda disponible
+
+    #La incidencia quedara registrada con el nombre del alumno, codigo del libro, la fecha del prestamo, del retorno y la que se ha regresado finalmente.
 
 #TO DO 
 def listLlibres(command):
-    
+    #Mostrar todos los datos de todos los libros registrados.
+    #EJ: >ListLlibre
+    #001 : La historia interminable, Michael Ende, - ESTAT: en préstec
+    #002 : El principito, Antoine de Saint Exupery - ESTAT: disponible 
+
 #TO DO
 def listPresteces(command):
 
