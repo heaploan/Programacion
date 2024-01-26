@@ -28,10 +28,10 @@ def startPrestec(command):
                     if d >= datetime.today().day and m >= datetime.today().month and y >= datetime.today().year:
                         iniciPrestec = dt.date(y,m,d)
                         fiPrestec = iniciPrestec + dt.timedelta(days=15)
+                        lendingsUpdate(command[1],command[2],command[3], fiPrestec)
+                        print("Prestec registrat. El llibre s'ha de retornar:",fiPrestec)
                     else:
                         print("ERROR: La fecha no puede ser anterior al día de hoy")
-                    lendingsUpdate(command[1],command[2],iniciPrestec,fiPrestec)
-                    print("Prestec registrat. El llibre s'ha de retornar:",fiPrestec)
                 else:
                     print('ERROR: Data incorrecte')
             else:
@@ -40,38 +40,39 @@ def startPrestec(command):
             print('ERROR: No hi ha cap llibre registrat')
     else:
         print("ERROR: nº d'arguments incorrecte")
+    #Si la fecha de regreso es posterior a la registrada, se tendrá que registrar una incidencia
 
 #TO DO 
 def endPrestec(command):
     if len(command) == 3:
     #El libro tiene que existir y estar en prestamo para poderse regresar
-        if checkLendings(command[1]):
     #La fecha de regreso no puede ser antarior a la fecha del inicio del prestamo.
-        
-    #Si la fecha de regreso es posterior a la registrada, se tendrá que registrar una incidencia
+            checkDate(command[1], command[2]) 
+    else:
+        print('ERROR: el comando no es correcte')
 
     #Registrar que un libro se regresa a la biblioteca por tanto queda disponible
 
     #La incidencia quedara registrada con el nombre del alumno, codigo del libro, la fecha del prestamo, del retorno y la que se ha regresado finalmente.
 
 #TO DO 
-def listLlibres(command):
+#def listLlibres(command):
     #Mostrar todos los datos de todos los libros registrados.
     #EJ: >ListLlibre
     #001 : La historia interminable, Michael Ende, - ESTAT: en préstec
     #002 : El principito, Antoine de Saint Exupery - ESTAT: disponible 
 
 #TO DO
-def listPresteces(command):
+#def listPresteces(command):
 
 #TO DO 
-def listGenere(command):
+#def listGenere(command):
 
 #TO DO
-def maxLlibre(command):
+#def maxLlibre(command):
 
 #TO DO 
-def stats(command):
+#def stats(command):
 
 #TO DO
-def info(command):
+#def info(command):

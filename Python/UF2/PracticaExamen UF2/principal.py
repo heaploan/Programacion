@@ -11,23 +11,23 @@ while check:
     elif command[0] == "endPrestec":
         endPrestec(command)
     #TO DO
-    elif command[0] == "listLlibres":
-        listLlibres(command)
+    #elif command[0] == "listLlibres":
+        #listLlibres(command)
     #TO DO
-    elif command[0] == "listPrestecs":
-        listPrestecs(command)
+    #elif command[0] == "listPrestecs":
+        #listPrestecs(command)
     #TO DO
-    elif command[0] == "listGenere":
-        listGenere(command)
+    #elif command[0] == "listGenere":
+        #listGenere(command)
     #TO DO 
-    elif command[0] == "maxLlibre":
-        maxLlibre(command)
+    #elif command[0] == "maxLlibre":
+        #maxLlibre(command)
     #TO DO 
-    elif command[0] == "stats":
-        stats(command)
+    #elif command[0] == "stats":
+        #stats(command)
     #TO DO 
-    elif command[0] == "info":
-        info(command)
-    else:
-        print("ERROR: comando incorrecto")
+    #elif command[0] == "info":
+        #info(command)
+    #else:
+        #print("ERROR: comando incorrecto")
         

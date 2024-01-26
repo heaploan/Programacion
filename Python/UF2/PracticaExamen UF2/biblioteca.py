@@ -3,7 +3,7 @@ from datetime import datetime # para no tener que poner datetime.datetime
 
 books = {}
 lendings = {}
-students = {}
+incidences = {}
 
 def checkBooks(code):
    if code in books:
@@ -28,23 +28,30 @@ def checkLendings(code):
         books[code]['ESTAT'] = "disponible"
         return True
 
+#Actualiza el diccionario lendings y incidences con sus incidencias
 def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
-    lendings[code[1]] = {'alumne': alumne[2], 
+    lendings[code] = {'alumne': alumne, 
                         'inici': iniciPrestec, 
                         'fi': fiPrestec}
-    students[alumne] = {'incidences': 0
+    incidences[alumne] = {'incidences': 0
                         }
+    
 #TO DO 
 #Checkar si la fiecha de inicio de prestamo es anterior a la actual o posterior a la fecha de fin de prestamo
-def checkDate(code, iniciPrestec, fiPrestec):
+def checkDate(code, fiPrestec):
+    print(fiPrestec)
     if code in lendings:
-        if fiPrestec < iniciPrestec:
-            print("ERROR: la data de fiPrestec no pot ser menor al iniciPrestec")
-        elif fiPrestec > lendings[code[1]]['fi']:
+        if  fiPrestec > lendings[code]['fi']:
             student = lendings[code[1]]['alumne']
-            students[student]['incidences'] += 1
+            incidences[student]['incidences'] += 1
+            print("El llibre s'ha retornat amb retard. Incidencia registrada")
             lendings[code]['fi'] = fiPrestec
-            print(f'{code}, {books[code]["titol"]} data inici: {iniciPrestec} data fi: {fiPrestec}          *FORA DE TERMINI*          ')
-            
+            print('El llibre ha quedat disponible.')
+        elif fiPrestec <= lendings[code]['inici']:
+            print("ERROR: la data de fiPrestec no pot ser menor al iniciPrestec")
+        else:
+            print('El llibre ha quedat disponible.')
+    else:
+        print("ERROR: El llibre no está en préstec")
 
-
+    
