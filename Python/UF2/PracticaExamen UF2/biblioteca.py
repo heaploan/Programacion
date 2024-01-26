@@ -29,11 +29,22 @@ def checkLendings(code):
         return True
 
 def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
-    lendings[code[1]] = {'Alumne': alumne[2], 
-                        'Inici': iniciPrestec, 
-                        'Fi': fiPrestec}
+    lendings[code[1]] = {'alumne': alumne[2], 
+                        'inici': iniciPrestec, 
+                        'fi': fiPrestec}
     students[alumne] = {'incidences': 0
                         }
 #TO DO 
 #Checkar si la fiecha de inicio de prestamo es anterior a la actual o posterior a la fecha de fin de prestamo
 def checkDate(code, iniciPrestec, fiPrestec):
+    if code in lendings:
+        if fiPrestec < iniciPrestec:
+            print("ERROR: la data de fiPrestec no pot ser menor al iniciPrestec")
+        elif fiPrestec > lendings[code[1]]['fi']:
+            student = lendings[code[1]]['alumne']
+            students[student]['incidences'] += 1
+            lendings[code]['fi'] = fiPrestec
+            print(f'{code}, {books[code]["titol"]} data inici: {iniciPrestec} data fi: {fiPrestec}          *FORA DE TERMINI*          ')
+            
+
+
