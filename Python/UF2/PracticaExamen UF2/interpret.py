@@ -47,7 +47,7 @@ def endPrestec(command):
     if len(command) == 3:
     #El libro tiene que existir y estar en prestamo para poderse regresar
     #La fecha de regreso no puede ser antarior a la fecha del inicio del prestamo.
-            checkDate(command[1], command[2]) 
+            checkDate(command[1], command[2])
     else:
         print('ERROR: el comando no es correcte')
 

@@ -39,19 +39,18 @@ def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
 #TO DO 
 #Checkar si la fiecha de inicio de prestamo es anterior a la actual o posterior a la fecha de fin de prestamo
 def checkDate(code, fiPrestec):
-    print(fiPrestec)
     if code in lendings:
-        if  fiPrestec > lendings[code]['fi']:
-            student = lendings[code[1]]['alumne']
+        fiPrestec_date = datetime.strptime(fiPrestec, "%Y/%m/%d").date()
+        if fiPrestec_date == lendings[code]['fi']:
+            lendings.pop(code)
+            print('El llibre ha quedat disponible.')
+        elif fiPrestec_date > lendings[code]['fi']:
+            student = lendings[code]['alumne']
             incidences[student]['incidences'] += 1
             print("El llibre s'ha retornat amb retard. Incidencia registrada")
-            lendings[code]['fi'] = fiPrestec
+            lendings.pop(code)
             print('El llibre ha quedat disponible.')
-        elif fiPrestec <= lendings[code]['inici']:
-            print("ERROR: la data de fiPrestec no pot ser menor al iniciPrestec")
         else:
-            print('El llibre ha quedat disponible.')
+            print("ERROR: la data de fiPrestec no pot ser menor al iniciPrestec")
     else:
         print("ERROR: El llibre no está en préstec")
-
-    
