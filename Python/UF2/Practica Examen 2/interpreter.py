@@ -95,8 +95,7 @@ def listLlibres(command):
 #def listPrestecs(command):
     #tiene que mostrar los libros que están en préstamo
     #tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
-    
-                
+             
 #TO DO
 #def listGenere:
     #tiene que mostrar los datos del género indicado
