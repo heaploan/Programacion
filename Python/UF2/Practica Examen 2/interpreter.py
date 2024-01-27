@@ -111,4 +111,3 @@ def listLlibres(command):
 #TO DO
     #def info(command):
         #tiene que mostrar los libros que tiene en préstamo el alumno (si los tiene) y las incidencias que ha tenido.
-
