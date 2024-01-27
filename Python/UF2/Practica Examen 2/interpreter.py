@@ -36,22 +36,18 @@ def calcDate(command):
     m = int(d_m_y[1])
     y = int(d_m_y[2])
     if 0 < d < 32 and 0 < m < 13 and y > 0:
-        today = dt.date.today()
         selectedDate = dt.date(y, m, d)
-        if selectedDate >= today:
-            iniciPrestec = selectedDate
-            fiPrestec = iniciPrestec + dt.timedelta(days=15)
-            lendingsUpdate(command[1], command[2], command[3], fiPrestec)
-            books[command[1]]['estado'] = "en prestamo"
-            print("Préstamo registrado, el libro se ha de regresar:", fiPrestec)
-        else:
-            print("ERROR: La fecha no puede ser anterior al día de hoy")
+        finPrestamo = selectedDate + dt.timedelta(days=15)
+        lendingsUpdate(command[1], command[2], selectedDate, finPrestamo)
+        books[command[1]]['estado'] = "en prestamo"
+        print("Préstamo registrado, el libro se ha de regresar:", finPrestamo)
     else:
         print('ERROR: Fecha incorrecta.')
 
+
 #Verificamos si el codigo está en el diccionario lendings o no
 def checkLendings(code):
-    if code in lendings:
+    if books[code]['estado'] == 'disponible':
         return False
     else:
         return True
@@ -62,7 +58,7 @@ def checkLendings(code):
 def startPrestec(command):
     if len(command) == 4:
         if not checkBooks(command[1]):
-            if checkLendings(command[1]):
+            if not checkLendings(command[1]):
                 calcDate(command)
             else:
                 print("ERROR: No se puede prestar un libro que ya está en préstamo")
@@ -71,11 +67,40 @@ def startPrestec(command):
     else:
         print("ERROR: Número de argumentos incorrecto.")
 
+def checkDate(code, finPrestamo):
+    if books[code]['estado'] == 'en prestamo':
+        finPrestamoDate = datetime.strptime(finPrestamo, "%d/%m/%Y").date()
+        if finPrestamoDate == lendings[code]['fin']:
+            books[code]['estado'] = 'disponible'
+            print('El llibre ha quedat disponible.')
+        elif finPrestamoDate > lendings[code]['fin']:
+            lendings[code]['incidencias'] += 1
+            lendings[code]['entrega final'] = finPrestamoDate
+            lendings[code]['incidencia'] = {'alumno': lendings[code]['alumno'],
+                                            'libro': code,
+                                            'inicio': lendings[code]['inicio'],
+                                            'fin': lendings[code]['fin'],}
+            print("El libro ha sido entregado con retraso, incidencia registrada.")
+            books[code]['estado'] = 'disponible'
+            print('El libro ahora está disponible')
+        else:
+            print("ERROR: La fecha de fin de préstamo no puede ser menor a la de inicio")
+    else:
+        print("ERROR: El libro no está en préstamo")
+
+
 #TO DO
-#def endPrestec(command):
-    #if len(command) == 3:
+def endPrestec(command):
+    if len(command) == 3:
         #El libro tiene que existir y tiene que estar en préstamo para poderse regresar
+        if not checkBooks(command[1]):
+            checkDate(command[1], command[2])
+        else:
+            print('ERROR: El codigo del libro no está registrado')
+    else:
+        print('ERROR: Número de argumentos incorrecto.')
         #La fecha del regreso no puede ser anterior a la fecha del inicio del préstamo
+            
         #Si la fecha del regreso es posterior a la registrada, se deberá de registrar la incidencia
         #La incidencia quedará registrada con el nombre del alumno, codigo del libro y los tres datos del préstamo.
         #Fecha en la que se ha prestado el libro, fecha en la que se tenia que regresar y fecha en la que se ha regresado finalmente.
@@ -96,18 +121,58 @@ def listLlibres(command):
     #tiene que mostrar los libros que están en préstamo
     #tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
              
-#TO DO
-#def listGenere:
-    #tiene que mostrar los datos del género indicado
-
-#TO DO
-    #def maxLlibre(command):
-        #tiene que mostrar los datos del libro que tien más páginas de la biblioteca
-
+#Tiene que mostrar los datos del género indicado
+def listGenere(command):
+    if len(command) == 2:
+        if not checkBooks:
+            print("ERROR: no hay libros registrados.")
+        else:
+            genero = command[1]
+            encontrado = False
+            for code, info in books.items():
+                if info['genero'].lower() == genero.lower():
+                    encontrado = True
+                    print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")                
+            if not encontrado:
+                print(f"No hay libros del género '{genero}' registrados.")
+              
+#Tiene que mostrar los datos del libro que tien más páginas de la biblioteca
+def maxLlibre(command):
+    if len(command) == 1:
+        if not checkBooks:
+            print('ERROR: No hay libros registrados.')
+        else:
+            maxPages = 0
+            maxPagesBook = ''
+            for code, info in books.items():
+                numPages = info['paginas']
+                if numPages > maxPages:
+                    maxPages = numPages
+                    maxPagesBook = {'code': code, 'title': info['titulo'], 'pages': numPages}
+            if maxPagesBook:
+                print(f'El libro con más páginas de la biblioteca es: {maxPagesBook["title"]} con {maxPagesBook["pages"]} páginas.')
 #TO DO
     #def stats(command):
         #tiene que mostrar el número de libros registrados, número de incidencias registradas y media de páginas por libro de la biblioteca
 
-#TO DO
-    #def info(command):
-        #tiene que mostrar los libros que tiene en préstamo el alumno (si los tiene) y las incidencias que ha tenido.
+#TO DO 
+#Tiene que mostrar los libros que tiene en préstamo (si los tiene) y las incidencias que ha tenido (si las ha tenido)
+def info(command):
+    foundLoans = False
+    if len(command) == 2:
+        if command[1]:
+            for code, info in lendings.items():
+                if info['alumno'] == command[1]:
+                    if not foundLoans:
+                        print(f"Libros en préstamo:")
+                        foundLoans = True
+                    bookTitle = books[code]['titulo']
+                    if books[code]['estado'] == "disponible":
+                        print(f"El alumno indicado no tiene libros en préstamo.")
+                    else:
+                        print(f"Llibre: {code} - {bookTitle} Inici: {info['inicio']} Data fi: {info['fin']}")
+                        if info['incidencias'] > 0:
+                            print("Incidencias:")
+                            print(f"libro: {code} inicio: {info['inicio']} fin: {info['fin']} Entrega Final: {info['entrega final']}")
+                        # Eliminamos la parte del 'elif' que imprime "El alumno indicado no tiene incidencias registradas"
+

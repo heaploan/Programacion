@@ -14,7 +14,9 @@ def booksUpdate(code, title, autor, genre, numPag):
 
 def lendingsUpdate(code, alumno, inicioPrestamo, finPrestamo):
     lendings[code] = {'alumno': alumno, 
-                'inici': inicioPrestamo, 
-                'fi': finPrestamo,
-                'incidence': '', 
-                'incidences': 0}
+                'inicio': inicioPrestamo, 
+                'fin': finPrestamo,
+                'entrega final': '',
+                'incidencia': '', 
+                'incidencias': 0}
+
