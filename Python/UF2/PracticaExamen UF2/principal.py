@@ -1,6 +1,5 @@
 from interpret import *
 check = True
-
 while check:
     command = input('>').split('-')
     if command[0] == "addLlibre":
@@ -28,6 +27,8 @@ while check:
     #TO DO 
     #elif command[0] == "info":
         #info(command)
+    elif command[0] == "quit":
+        check = False
     #else:
         #print("ERROR: comando incorrecto")
-        
+    

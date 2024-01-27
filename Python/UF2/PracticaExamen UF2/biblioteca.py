@@ -30,11 +30,11 @@ def checkLendings(code):
 
 #Actualiza el diccionario lendings y incidences con sus incidencias
 def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
-    lendings[code] = {'alumne': alumne, 
+    lendings = {'code': code,
+                'alumne': alumne, 
                         'inici': iniciPrestec, 
-                        'fi': fiPrestec}
-    incidences[alumne] = {'incidences': 0
-                        }
+                        'fi': fiPrestec,
+                        'incidences': 0}
     
 #TO DO 
 #Checkar si la fiecha de inicio de prestamo es anterior a la actual o posterior a la fecha de fin de prestamo
@@ -42,7 +42,7 @@ def checkDate(code, fiPrestec):
     if code in lendings:
         fiPrestec_date = datetime.strptime(fiPrestec, "%Y/%m/%d").date()
         if fiPrestec_date == lendings[code]['fi']:
-            lendings.pop(code)
+            books[code]['estado']
             print('El llibre ha quedat disponible.')
         elif fiPrestec_date > lendings[code]['fi']:
             student = lendings[code]['alumne']
