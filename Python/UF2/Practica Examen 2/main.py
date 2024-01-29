@@ -3,10 +3,9 @@ check = True
 while check:
     command = input('>').split('-')
     if command[0].lower() == "addllibre":
-        addLlibre(command)
+        addLlibre(command)        
     elif command[0].lower() == "startprestec":
         startPrestec(command)
-    #TO DO
     elif command[0].lower() == "endprestec":
         endPrestec(command)
     elif command[0].lower() == "listllibres":
@@ -26,7 +25,7 @@ while check:
     #elif command[0].lower() == "info":
         #info(command)
     elif command[0].lower() == "quit":
-        check = False
+        if len(command) == 1:
+            check = False
     else:
         print("ERROR: comando incorrecto")
-    
