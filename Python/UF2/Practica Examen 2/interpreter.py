@@ -142,22 +142,8 @@ def maxLlibre(command):
 
 #TO DO 
 #Tiene que mostrar los libros que tiene en préstamo (si los tiene) y las incidencias que ha tenido (si las ha tenido)
-def info(command):
-    foundLoans = False
-    if len(command) == 2:
-        if command[1]:
-            for code, info in lendings.items():
-                if info['alumno'] == command[1]:
-                    if not foundLoans:
-                        print(f"Libros en préstamo:")
-                        foundLoans = True
-                    bookTitle = books[code]['titulo']
-                    if books[code]['estado'] == "disponible":
-                        print(f"El alumno indicado no tiene libros en préstamo.")
-                    else:
-                        print(f"Llibre: {code} - {bookTitle} Inici: {info['inicio']} Data fi: {info['fin']}")
-                        if info['incidencias'] > 0:
-                            print("Incidencias:")
-                            print(f"libro: {code} inicio: {info['inicio']} fin: {info['fin']} Entrega Final: {info['entrega final']}")
+#def info(command):
+    #if len(command) == 2:
+
                         # Eliminamos la parte del 'elif' que imprime "El alumno indicado no tiene incidencias registradas"
 

@@ -22,9 +22,9 @@ while check:
     #TO DO 
     #elif command[0].lower() == "stats":
         #stats(command)
-    
-    elif command[0].lower() == "info":
-        info(command)
+    #TO DO
+    #elif command[0].lower() == "info":
+        #info(command)
     elif command[0].lower() == "quit":
         check = False
     else:
