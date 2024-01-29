@@ -16,7 +16,6 @@ def booksUpdate(code, title, author, genre, numPag):
                       'autor': author,
                       'genere': genre,
                       'pags': int(numPag),
-                      #TO DO
                       'ESTAT': "disponible"
                     }
     
@@ -32,7 +31,8 @@ def checkLendings(code):
 def lendingsUpdate(code, alumne, iniciPrestec, fiPrestec):
     lendings[code] = {'alumne': alumne, 
                         'inici': iniciPrestec, 
-                        'fi': fiPrestec}
+                        'fi': fiPrestec
+                        }
     incidences[alumne] = {'incidences': 0
                         }
     
@@ -42,7 +42,7 @@ def checkDate(code, fiPrestec):
     if code in lendings:
         fiPrestec_date = datetime.strptime(fiPrestec, "%Y/%m/%d").date()
         if fiPrestec_date == lendings[code]['fi']:
-            lendings.pop(code)
+            lendings
             print('El llibre ha quedat disponible.')
         elif fiPrestec_date > lendings[code]['fi']:
             student = lendings[code]['alumne']

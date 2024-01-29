@@ -29,7 +29,7 @@ def startPrestec(command):
                         iniciPrestec = dt.date(y,m,d)
                         fiPrestec = iniciPrestec + dt.timedelta(days=15)
                         lendingsUpdate(command[1],command[2],command[3], fiPrestec)
-                        print("Prestec registrat. El llibre s'ha de retornar:",fiPrestec)
+                        print("Prestec registrat. El llibre s'ha de retornar:", fiPrestec)
                     else:
                         print("ERROR: La fecha no puede ser anterior al día de hoy")
                 else:
