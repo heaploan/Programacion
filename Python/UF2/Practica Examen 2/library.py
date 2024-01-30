@@ -43,12 +43,14 @@ def checkDate(code, finPrestamo):
         finPrestamoDate = datetime.strptime(finPrestamo, "%d/%m/%Y").date()
         if finPrestamoDate <= lendings[code]['fin']:
             books[code]['estado'] = 'disponible'
+            lendings.pop(code)
             print('El libro ahora esta disponible.')
         elif finPrestamoDate > lendings[code]['fin']:
             incidences[lendings[code]['alumno']] = []
             incidences[lendings[code]['alumno']].append([lendings[code], lendings[code]['inicio'], lendings[code]['fin'], finPrestamoDate])
             print("El libro ha sido entregado con retraso, incidencia registrada.")
             books[code]['estado'] = 'disponible'
+            lendings.pop(code)
             print('El libro ahora está disponible')
         else:
             print("ERROR: La fecha de fin de préstamo no puede ser menor a la de inicio")
