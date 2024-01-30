@@ -1,0 +1,10 @@
+git init --> inicializar un repositorio vacío en git
+git add --> se pueden añadir archivos en especifico o todos los archivos.
+Ejemplo:
+git add main.py --> solo un archivo
+git add . --> todos los archivos.
+git commit -m --> obligatorio, si no, no se puede hacer el commit, también se 
+tiene que poner un comentario con '' para mencionar los cambios o archivos que se han realizado. 
+un commit es como un snapshot del repositorio en cierto momento en el tiempo.
+git log --> muestra todos los cambios realizados (o acciones)
+git checkout --> le dice a git a que commit o rama añadir los cambios. 

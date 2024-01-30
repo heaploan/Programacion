@@ -80,6 +80,5 @@ def checkGenere(command):
         if info['genero'].lower() == genero.lower():
             encontrado = True
             print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")                
-            
         if not encontrado:
             print(f"No hay libros del género '{genero}' registrados.")
