@@ -45,8 +45,10 @@ def checkDate(code, finPrestamo):
             lendings.pop(code)
             print('El libro ahora esta disponible.')
         elif finPrestamoDate > lendings[code]['fin']:
-            incidences[lendings[code]['alumno']] = []
-            incidences[lendings[code]['alumno']].append([lendings[code], lendings[code]['inicio'], lendings[code]['fin'], finPrestamoDate])
+            alumno = lendings[code]['alumno']
+            if alumno not in incidences:
+                incidences[lendings[code]['alumno']] = []
+                incidences[lendings[code]['alumno']].append([lendings[code], lendings[code]['inicio'], lendings[code]['fin'], finPrestamoDate])
             print("El libro ha sido entregado con retraso, incidencia registrada.")
             books[code]['estado'] = 'disponible'
             lendings.pop(code)
@@ -75,11 +77,73 @@ def calcDate(command):
 
 #Verifica que el género exista en el diccionario books, si no existe mostrará el error.
 def checkGenere(command):
-    genero = command[1]
-    encontrado = False
-    for code, info in books.items():
-        if info['genero'].lower() == genero.lower():
-            encontrado = True
-            print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")                
-        if not encontrado:
-            print(f"No hay libros del género '{genero}' registrados.")
+        if command[1] == '' or command[1] == ' ':
+            print('ERROR: genero no especificado')
+        else:
+            if not checkBooks:
+                print("ERROR: no hay libros registrados.")
+            else:
+                genero = command[1]
+                encontrado = False
+                for code, info in books.items():
+                    if info['genero'].lower() == genero.lower():
+                        encontrado = True
+                        print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")                
+                if not encontrado:
+                    print(f"No hay libros del género '{genero}' registrados.")
+
+def inLendings(command):
+    if books == {}:
+        print("No hay libros registrados.")
+    else:
+        if lendings == {}:
+            print('No hay libros en préstamo.')
+        else:     
+            print('Libros en préstamo:')
+            for code, lending in lendings.items():
+                print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']}")
+    
+# TO DO
+def infoStudent(code, student):
+    prestamosExist = False
+    for code, lending in lendings.items():
+        if lending['alumno'] == student:
+            prestamosExist = True
+            print(f"Llibres en préstec per l'alumne {student}:")
+            print(f"Llibre: {code} - {books[code]['titulo']} Inici: {lending['inicio']}, Data fi: {lending['fin']}")
+
+    if not prestamosExist:
+        print(f"L'alumne indicat no té cap préstec registrat.")
+        
+    incidenciasExist = False
+    for incidenceStudent, incidencesList in incidences.items():
+        if incidenceStudent == student:
+            incidenciasExist = True
+            print(f"Incidències per l'alumne {student}:")
+            for incidence in incidencesList:
+                code = incidence[0]['alumno']  # Use the book code directly
+                print(f"Llibre: {code} - {books[code]['titulo']} Inici: {incidence[1]}, Data fi: {incidence[2]}, Devolució: {incidence[3]}")
+            break
+
+    if not incidenciasExist:
+        print(f"No hi ha incidències per l'alumne {student}.")
+
+def getMedia():
+    if not books:
+        return 0
+    totalPages = 0
+    for info in books.values():
+        totalPages += info['paginas']
+    return totalPages / len(books)
+
+def getTotalIncidences():
+    total = 0
+    for incidencesList in incidences.values():
+        total += len(incidencesList)
+        return total
+
+def getPrestamos():
+    if lendings:
+        return len(lendings)
+    else:
+        return 0

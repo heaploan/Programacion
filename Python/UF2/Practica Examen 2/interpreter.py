@@ -15,7 +15,7 @@ def addLlibre(command):
         else:
             print('ERROR: ¡Ya existe un libro con este código')
     else:
-        print('ERROR: ¡Número de argumentos incorrecto!')
+        print('ERROR: ¡Número de argumentos incorrecto')
 
 #Se confirma que la longitud de command sea 4, en caso contrario muestra error
 #Si el diccionario books está vacío, mostrará error.
@@ -53,19 +53,24 @@ def listLlibres(command):
         else:
             for code, info in books.items():
                 print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")
+    else: 
+        print("ERROR: Número de argumentos incorrecto.")
 
 #TO DO
-#def listPrestecs(command):
-    #tiene que mostrar los libros que están en préstamo
-    #tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
-             
+#tiene que mostrar los libros que están en préstamo
+#tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.    
 #Tiene que mostrar los datos del género indicado
+def listPrestecs(command):
+    if len(command) == 1:
+        inLendings(command)
+    else:
+        print('ERROR: Número de argumentos incorrecto')
+
 def listGenere(command):
     if len(command) == 2:
-        if not checkBooks:
-            print("ERROR: no hay libros registrados.")
-        else:
-            checkGenere(command)
+        checkGenere(command)
+    else: 
+        print('ERROR: Número de argumentos incorrecto.')
               
 #Tiene que mostrar los datos del libro que tien más páginas de la biblioteca
 def maxLlibre(command):
@@ -82,13 +87,22 @@ def maxLlibre(command):
                     maxPagesBook = {'code': code, 'title': info['titulo'], 'pages': numPages}
             if maxPagesBook:
                 print(f'El libro con más páginas de la biblioteca es: {maxPagesBook["title"]} con {maxPagesBook["pages"]} páginas.')
-#TO DO
-    #def stats(command):
-        #tiene que mostrar el número de libros registrados, número de incidencias registradas y media de páginas por libro de la biblioteca
+    else:
+        print("ERROR: Número de argumentos incorrecto.")
 
+#TO DO
+def stats(command):
+        #tiene que mostrar el número de libros registrados, número de incidencias registradas y media de páginas por libro de la biblioteca
+    if len(command) == 1:
+        media = getMedia()
+        incidences = getTotalIncidences()
+        prestamos = getPrestamos()
+        print(f"Media de páginas por libro: {media}")
+        print(f"Total de incidencias: {incidences}")
+        print(f"Prestamos: {prestamos}")
+    else:
+        print('ERROR: número de argumentos incorrecto.')
 #TO DO 
 #Tiene que mostrar los libros que tiene en préstamo (si los tiene) y las incidencias que ha tenido (si las ha tenido)
 #def info(command):
-    #if len(command) == 2:
-        
-
+    
