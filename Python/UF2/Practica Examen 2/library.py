@@ -17,8 +17,7 @@ def booksUpdate(code, title, autor, genre, numPag):
 def lendingsUpdate(code, alumno, inicioPrestamo, finPrestamo):
     lendings[code] = {'alumno': alumno, 
                 'inicio': inicioPrestamo, 
-                'fin': finPrestamo,
-                'incidencia': []}
+                'fin': finPrestamo}
 
 #Verificamos si el codigo está en el diccionario lendings o no
 def checkLendings(code):
