@@ -2,25 +2,26 @@ from interpreter import *
 check = True
 while check:
     command = input('>').split('-')
-    if command[0].lower() == "addllibre":
+    com = command[0].lower()
+    if com == "addllibre":
         addLlibre(command)        
-    elif command[0].lower() == "startprestec":
+    elif com == "startprestec":
         startPrestec(command)
-    elif command[0].lower() == "endprestec":
+    elif com == "endprestec":
         endPrestec(command)
-    elif command[0].lower() == "listllibres":
+    elif com == "listllibres":
         listLlibres(command)
-    elif command[0].lower() == "listprestecs":
+    elif com == "listprestecs":
         listPrestecs(command)
-    elif command[0].lower() == "listgenere":
+    elif com == "listgenere":
         listGenere(command)
-    elif command[0].lower() == "maxllibre":
+    elif com == "maxllibre":
         maxLlibre(command)
-    elif command[0].lower() == "stats":
+    elif com == "stats":
         stats(command)
-    elif command[0].lower() == "info":
+    elif com == "info":
         info(command)
-    elif command[0].lower() == "quit":
+    elif com == "quit":
         if len(command) == 1:
             check = False
     else:
