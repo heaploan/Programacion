@@ -75,6 +75,27 @@ def calcDate(command):
     books[command[1]]['estado'] = "en prestamo"
     print("Préstamo registrado, el libro se ha de regresar:", finPrestamo)
 
+def getBooksList():
+    if books == {}:
+        print('No hay libros registrados.')
+    else:
+        for code, info in books.items():
+            print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")
+
+def getMaxPages():
+    if books == {}:
+            print('ERROR: No hay libros registrados')  
+    else:
+        maxPages = 0
+        maxPagesBook = ''
+        for code, info in books.items():
+            numPages = info['paginas']
+            if numPages > maxPages:
+                maxPages = numPages
+                maxPagesBook = {'code': code, 'title': info['titulo'], 'pages': numPages}
+        if maxPagesBook:
+            print(f'El libro con más páginas de la biblioteca es: {maxPagesBook["title"]} con {maxPagesBook["pages"]} páginas.')
+
 #Verifica que el género exista en el diccionario books, si no existe mostrará el error.
 def checkGenere(command):
         if command[1] == '' or command[1] == ' ':
@@ -108,8 +129,6 @@ def inLendings(command):
                     print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']} *FUERA DE PLAZO*  ")
                 else:
                     print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']}")
-
-
 
 #Verifica que el alumno esté en el diccionario lendings, si está, imprimirá la información del libro.
 def infoStudent(command):

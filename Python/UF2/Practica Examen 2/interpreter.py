@@ -48,11 +48,7 @@ def endPrestec(command):
 #En caso de que haya libros, imprimirá el código y sus valores, titulo, autor y estado.
 def listLlibres(command):
     if len(command) == 1:
-        if books == {}:
-            print('No hay libros registrados.')
-        else:
-            for code, info in books.items():
-                print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")
+        getBooksList()
     else: 
         print("ERROR: Número de argumentos incorrecto.")
 
@@ -75,18 +71,7 @@ def listGenere(command):
 #Tiene que mostrar los datos del libro que tien más páginas de la biblioteca
 def maxLlibre(command):
     if len(command) == 1:
-        if books == {}:
-            print('ERROR: No hay libros registrados')  
-        else:
-            maxPages = 0
-            maxPagesBook = ''
-            for code, info in books.items():
-                numPages = info['paginas']
-                if numPages > maxPages:
-                    maxPages = numPages
-                    maxPagesBook = {'code': code, 'title': info['titulo'], 'pages': numPages}
-            if maxPagesBook:
-                print(f'El libro con más páginas de la biblioteca es: {maxPagesBook["title"]} con {maxPagesBook["pages"]} páginas.')
+        getMaxPages()
     else:
         print("ERROR: Número de argumentos incorrecto.")
 
