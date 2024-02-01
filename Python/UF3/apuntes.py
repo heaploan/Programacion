@@ -53,7 +53,11 @@ if len(command) > 1:
             alumnos[nombre] = nota
             #escribimos en el fichero ("con o para añadir")
             f = open(rutaArchivo, "a")
-            f.write = 
+            f.write(nombre + "-" + str(nota) + "\n")
+            f.close()
+            print("Alumno registrado")
+        else:
+            print("Ya existe un alumno con ese nombre")
 else:
     print("Uso fitxers.py nombreAlumno nota (para añadir alumno)")
     print("Uso fitxers.py list (para listar datos de los alumnos)")
