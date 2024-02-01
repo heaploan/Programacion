@@ -78,12 +78,7 @@ def maxLlibre(command):
 def stats(command):
         #tiene que mostrar el número de libros registrados, número de incidencias registradas y media de páginas por libro de la biblioteca
     if len(command) == 1:
-        media = getMedia()
-        incidences = getTotalIncidences()
-        prestamos = getPrestamos()
-        print(f"Media de páginas por libro: {media}")
-        print(f"Total de incidencias: {incidences}")
-        print(f"Prestamos: {prestamos}")
+        printStats()
     else:
         print('ERROR: número de argumentos incorrecto.')
 

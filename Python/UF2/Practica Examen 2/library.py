@@ -157,6 +157,14 @@ def studentIncidence(command):
     else:
         print("El alumno indicado no tiene incidencias registradas.")    
 
+def printStats():
+    media = getMedia()
+    incidences = getTotalIncidences()
+    prestamos = getPrestamos()
+    print(f"Media de páginas por libro: {media}")
+    print(f"Total de incidencias: {incidences}")
+    print(f"Prestamos: {prestamos}")
+
 #Recibe los datos que hay de los libros, si no hay libros, regresa 0 para no dividir entre 0.
 #En caso de haber libros, hace una media de las páginas que hay en los libros, dividiendola por la longitud del diccionario books.
 def getMedia():
@@ -170,6 +178,8 @@ def getMedia():
 #Cuenta las incidencias que hay registradas en el diccionario incidences mirando el largo del diccionario incidences.
 def getTotalIncidences():
     total = 0
+    if not incidences:
+        return 0
     for incidencesList in incidences.values():
         total += len(incidencesList)
         return total
