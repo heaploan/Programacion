@@ -22,8 +22,8 @@ while check:
     elif command[0].lower() == "stats":
         stats(command)
     #TO DO
-    #elif command[0].lower() == "info":
-        #info(command)
+    elif command[0].lower() == "info":
+        info(command)
     elif command[0].lower() == "quit":
         if len(command) == 1:
             check = False

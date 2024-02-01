@@ -48,7 +48,7 @@ def checkDate(code, finPrestamo):
             alumno = lendings[code]['alumno']
             if alumno not in incidences:
                 incidences[lendings[code]['alumno']] = []
-                incidences[lendings[code]['alumno']].append([lendings[code], lendings[code]['inicio'], lendings[code]['fin'], finPrestamoDate])
+            incidences[lendings[code]['alumno']].append([code, lendings[code]['inicio'], lendings[code]['fin'], finPrestamoDate])
             print("El libro ha sido entregado con retraso, incidencia registrada.")
             books[code]['estado'] = 'disponible'
             lendings.pop(code)
@@ -92,6 +92,8 @@ def checkGenere(command):
                 if not encontrado:
                     print(f"No hay libros del género '{genero}' registrados.")
 
+#Verifica que haya libros registrados, si hay préstamos registrados y si los hay, entonces imprime los libros y la información del préstamo.
+#En caso de que haya algún error, mostrará el mensaje de error correspondiente.
 def inLendings(command):
     if books == {}:
         print("No hay libros registrados.")
@@ -104,30 +106,31 @@ def inLendings(command):
                 print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']}")
     
 # TO DO
-def infoStudent(code, student):
-    prestamosExist = False
-    for code, lending in lendings.items():
-        if lending['alumno'] == student:
-            prestamosExist = True
-            print(f"Llibres en préstec per l'alumne {student}:")
-            print(f"Llibre: {code} - {books[code]['titulo']} Inici: {lending['inicio']}, Data fi: {lending['fin']}")
+#Verifica que el alumno esté en el diccionario lendings, si está, imprimirá la información del libro.
+def infoStudent(command):
+    print("Llibres en prestec:")
+    check= 0
+    for code in lendings:
+        if lendings[code]['alumno'] == command:
+            check += 1        
+    if check > 0:
+        for code in lendings:
+            if command == lendings[code]['alumno']:
+                print(f"Libro: {code} - {books[code]['titulo']} inicio: {lendings[code]['inicio']} fin: {lendings[code]['fin']}")
+    else:
+        print("El alumno indicado no tiene préstamos registrados")
 
-    if not prestamosExist:
-        print(f"L'alumne indicat no té cap préstec registrat.")
-        
-    incidenciasExist = False
-    for incidenceStudent, incidencesList in incidences.items():
-        if incidenceStudent == student:
-            incidenciasExist = True
-            print(f"Incidències per l'alumne {student}:")
-            for incidence in incidencesList:
-                code = incidence[0]['alumno']  # Use the book code directly
-                print(f"Llibre: {code} - {books[code]['titulo']} Inici: {incidence[1]}, Data fi: {incidence[2]}, Devolució: {incidence[3]}")
-            break
+#Verifica que el alumno esté en el diccionario incidencias
+def studentIncidence(command):
+    print("Incidències:")
+    if command in incidences:
+        for incidence in incidences[command]:
+            print(f"Libro: {incidence[0]}  inicio: {incidence[1]} fin: {incidence[2]} fecha regreso: {incidence[3]}")
+    else:
+        print("El alumno indicado no tiene incidencias registradas.")    
 
-    if not incidenciasExist:
-        print(f"No hi ha incidències per l'alumne {student}.")
-
+#Recibe los datos que hay de los libros, si no hay libros, regresa 0 para no dividir entre 0.
+#En caso de haber libros, hace una media de las páginas que hay en los libros, dividiendola por la longitud del diccionario books.
 def getMedia():
     if not books:
         return 0
@@ -136,12 +139,14 @@ def getMedia():
         totalPages += info['paginas']
     return totalPages / len(books)
 
+#Cuenta las incidencias que hay registradas en el diccionario incidences mirando el largo del diccionario incidences.
 def getTotalIncidences():
     total = 0
     for incidencesList in incidences.values():
         total += len(incidencesList)
         return total
 
+#Calcula el largo del diccionario lendings para contar los prestamos que hay registrados en ese momento.
 def getPrestamos():
     if lendings:
         return len(lendings)

@@ -104,5 +104,11 @@ def stats(command):
         print('ERROR: número de argumentos incorrecto.')
 #TO DO 
 #Tiene que mostrar los libros que tiene en préstamo (si los tiene) y las incidencias que ha tenido (si las ha tenido)
-#def info(command):
+def info(command):
+    if len(command) == 2:
+        infoStudent(command[1])
+        studentIncidence(command[1])
+    else:
+        print("ERROR: número de argumentos incorrecto.")
     
+
