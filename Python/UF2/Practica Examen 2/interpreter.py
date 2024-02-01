@@ -58,14 +58,14 @@ def listLlibres(command):
 
 #TO DO
 #tiene que mostrar los libros que están en préstamo
-#tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.    
-#Tiene que mostrar los datos del género indicado
+#tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
 def listPrestecs(command):
     if len(command) == 1:
         inLendings(command)
     else:
         print('ERROR: Número de argumentos incorrecto')
 
+#Tiene que mostrar los datos del género indicado
 def listGenere(command):
     if len(command) == 2:
         checkGenere(command)
@@ -90,7 +90,6 @@ def maxLlibre(command):
     else:
         print("ERROR: Número de argumentos incorrecto.")
 
-#TO DO
 def stats(command):
         #tiene que mostrar el número de libros registrados, número de incidencias registradas y media de páginas por libro de la biblioteca
     if len(command) == 1:
@@ -102,7 +101,7 @@ def stats(command):
         print(f"Prestamos: {prestamos}")
     else:
         print('ERROR: número de argumentos incorrecto.')
-#TO DO 
+
 #Tiene que mostrar los libros que tiene en préstamo (si los tiene) y las incidencias que ha tenido (si las ha tenido)
 def info(command):
     if len(command) == 2:

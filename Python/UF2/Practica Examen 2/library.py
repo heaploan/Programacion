@@ -103,9 +103,14 @@ def inLendings(command):
         else:     
             print('Libros en préstamo:')
             for code, lending in lendings.items():
-                print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']}")
-    
-# TO DO
+                today = datetime.today().date()
+                if lending['fin'] < today:
+                    print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']} *FUERA DE PLAZO*  ")
+                else:
+                    print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']}")
+
+
+
 #Verifica que el alumno esté en el diccionario lendings, si está, imprimirá la información del libro.
 def infoStudent(command):
     print("Llibres en prestec:")
@@ -123,6 +128,7 @@ def infoStudent(command):
 #Verifica que el alumno esté en el diccionario incidencias
 def studentIncidence(command):
     print("Incidències:")
+    
     if command in incidences:
         for incidence in incidences[command]:
             print(f"Libro: {incidence[0]}  inicio: {incidence[1]} fin: {incidence[2]} fecha regreso: {incidence[3]}")
