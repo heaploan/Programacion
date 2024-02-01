@@ -75,6 +75,8 @@ def calcDate(command):
     books[command[1]]['estado'] = "en prestamo"
     print("Préstamo registrado, el libro se ha de regresar:", finPrestamo)
 
+#verifica si hay libros registrados, si no los hay, mostrará mensaje de error
+#En caso de haber libros, recorre el diccionario e imprime todos los libros registrados. 
 def getBooksList():
     if books == {}:
         print('No hay libros registrados.')
@@ -82,6 +84,7 @@ def getBooksList():
         for code, info in books.items():
             print(f"{code}: {info['titulo']} , {info['autor']} - ESTADO: {info['estado']}")
 
+#Para obtener el libro con el mayor número de páginas.
 def getMaxPages():
     if books == {}:
             print('ERROR: No hay libros registrados')  
