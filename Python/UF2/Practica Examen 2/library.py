@@ -33,6 +33,15 @@ def checkBooks(command):
    else:
        return False
 
+def checkBooksInLoan(command):
+    if not checkBooks(command[1]):
+        if not checkLendings(command[1]):
+            calcDate(command)
+        else:
+            print("ERROR: No se puede prestar un libro que ya está en préstamo")
+    else:
+        print("ERROR: No hay libros registrados")
+
 #Verifica que el libro no exista y que las páginas sean número o int
 #En caso de no ser así, mostrará sus respectivos errores.
 def checkPages(command):
@@ -128,6 +137,12 @@ def checkGenere(command):
                 if not encontrado:
                     print(f"No hay libros del género '{genero}' registrados.")
 
+def inLoan(command):
+    if not checkBooks(command[1]):
+        checkDate(command[1], command[2])
+    else:
+        print('ERROR: El codigo del libro no está registrado')
+
 #Verifica que haya libros registrados, si hay préstamos registrados y si los hay, entonces imprime los libros y la información del préstamo.
 #En caso de que haya algún error, mostrará el mensaje de error correspondiente.
 def inLendings(command):
@@ -167,7 +182,7 @@ def studentIncidence(command):
     
     if command in incidences:
         for incidence in incidences[command]:
-            print(f"Libro: {incidence[0]}  inicio: {incidence[1]} fin: {incidence[2]} fecha regreso: {incidence[3]}")
+            print(f"Libro: {incidence[0]}  inicio: {incidence[1]} fin: {incidence[2]} entrega: {incidence[3]}")
     else:
         print("El alumno indicado no tiene incidencias registradas.")    
 

@@ -15,23 +15,14 @@ def addLlibre(command):
 #En caso de que un libro esté en préstamo, se mostrará error.
 def startPrestec(command):
     if len(command) == 4:
-        if not checkBooks(command[1]):
-            if not checkLendings(command[1]):
-                calcDate(command)
-            else:
-                print("ERROR: No se puede prestar un libro que ya está en préstamo")
-        else:
-            print("ERROR: No hay libros registrados")
+        checkBooksInLoan(command)
     else:
         print("ERROR: Número de argumentos incorrecto.")
 
 #El libro tiene que existir y tiene que estar en préstamo para poderse regresar
 def endPrestec(command):
     if len(command) == 3:
-        if not checkBooks(command[1]):
-            checkDate(command[1], command[2])
-        else:
-            print('ERROR: El codigo del libro no está registrado')
+        inLoan(command)
     else:
         print('ERROR: Número de argumentos incorrecto.')
 
