@@ -27,6 +27,6 @@ y = int(d_m_y[2])
 # Crear un objeto datetime.date con el nuevo formato
 #dt.date (datetime.date) solo da información día, mes, año sin incluir horas, minutos y segundos.
 selectedDate = dt.date(d, m, y)
-# Formatear la fecha en el formato deseado
+# dar formato a la fecha deseada
 fechaFormateada = selectedDate.strftime("%Y/%m/%d")
 print(f"Fecha formateada: {fechaFormateada}")
