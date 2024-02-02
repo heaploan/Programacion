@@ -32,10 +32,10 @@ def startPrestec(command):
     else:
         print("ERROR: Número de argumentos incorrecto.")
 
-#TO DO
+#El libro tiene que existir y tiene que estar en préstamo para poderse regresar
 def endPrestec(command):
     if len(command) == 3:
-        #El libro tiene que existir y tiene que estar en préstamo para poderse regresar
+        
         if not checkBooks(command[1]):
             checkDate(command[1], command[2])
         else:
@@ -52,7 +52,6 @@ def listLlibres(command):
     else: 
         print("ERROR: Número de argumentos incorrecto.")
 
-#TO DO
 #tiene que mostrar los libros que están en préstamo
 #tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
 def listPrestecs(command):
@@ -89,5 +88,3 @@ def info(command):
         studentIncidence(command[1])
     else:
         print("ERROR: número de argumentos incorrecto.")
-    
-
