@@ -84,5 +84,4 @@ def checkWeek(command):
             missionDate = datetime.strptime(missionInfo['fecha'], "%d-%m-%Y").date()
         # Verificar si la misión está en el rango de 7 días a partir de la fecha actual
             if currentDate <= missionDate <= limitDate:
-                print(f"{title}: {missionInfo['fecha']} en {missionInfo['lugar']}")
-
+                print(f"{missionInfo['fecha']}  {title}")
