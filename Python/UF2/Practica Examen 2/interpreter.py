@@ -39,7 +39,7 @@ def listLlibres(command):
 #tiene que indicar los que estén fuera de terminio, es decir, que ya ha pasado la fecha de devolución y aún no se ha regresado.
 def listPrestecs(command):
     if len(command) == 1:
-        inLendings(command)
+        inLendings()
     else:
         print('ERROR: Número de argumentos incorrecto')
 

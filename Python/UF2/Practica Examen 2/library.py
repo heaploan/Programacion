@@ -147,7 +147,7 @@ def inLoan(command):
 
 #Verifica que haya libros registrados, si hay préstamos registrados y si los hay, entonces imprime los libros y la información del préstamo.
 #En caso de que haya algún error, mostrará el mensaje de error correspondiente.
-def inLendings(command):
+def inLendings():
     if books == {}:
         print("No hay libros registrados.")
     else:
