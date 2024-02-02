@@ -11,8 +11,8 @@ while check:
         missionDelete(command)
     elif com == 'list':
         list(command)
-    #elif com == 'setmana':
-
+    elif com == 'setmana':
+        setmana(command)
     #elif com == 'primera':
 
     elif com == 'exit':
