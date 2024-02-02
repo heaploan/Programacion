@@ -139,6 +139,8 @@ def inLendings(command):
         else:     
             print('Libros en préstamo:')
             for code, lending in lendings.items():
+                #como lending['fin'] está en formato .date (que solo da día, mes y año), today tiene que estar en el mismo formato
+                #de no ser así, el código petará.
                 today = datetime.today().date()
                 if lending['fin'] < today:
                     print(f"Libro: {code} - {books[code]['titulo']} inicio: {lending['inicio']} fin: {lending['fin']} *FUERA DE PLAZO*  ")
