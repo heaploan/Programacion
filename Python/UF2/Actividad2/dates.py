@@ -26,7 +26,7 @@ def properAniversari(date):
     actualYear  = datetime.date.today().year
     if mesActual > mes or (diaActual >= dia and mesActual >= mes):
         actualYear  += 1
-    return (f"El proper aniversari es: {datetime.date(actualYear , mes, dia).strftime("%d/%m/%Y")}")
+    return (f"El proper aniversari es: {datetime.date(actualYear , mes, dia).strftime('%d/%m/%Y')}")
 
 # c)
 # Con esta funcion calcularemos cuantos días quedan para el siguiente cumpleaños.
