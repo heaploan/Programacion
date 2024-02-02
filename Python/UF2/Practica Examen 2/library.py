@@ -137,6 +137,8 @@ def checkGenere(command):
                 if not encontrado:
                     print(f"No hay libros del género '{genero}' registrados.")
 
+#Verifica que los libros estén en prestamo
+#En caso de no estarlo, mostrará el mensaje de error.
 def inLoan(command):
     if not checkBooks(command[1]):
         checkDate(command[1], command[2])
