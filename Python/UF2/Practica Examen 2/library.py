@@ -33,6 +33,18 @@ def checkBooks(command):
    else:
        return False
 
+#Verifica que el libro no exista y que las páginas sean número o int
+#En caso de no ser así, mostrará sus respectivos errores.
+def checkPages(command):
+    if checkBooks(command[1]):
+        if command[5].isdigit() and int(command[5]) > 0:
+            booksUpdate(command[1], command[2], command[3], command[4], command[5])
+            print('Libro registrado.')
+        else:
+            print('ERROR: ¡Número de páginas incorrecto!')
+    else:
+            print('ERROR: ¡Ya existe un libro con este código')
+
 #La fecha del regreso no puede ser anterior a la fecha del inicio del préstamo
 #Si la fecha del regreso es posterior a la registrada, se deberá de registrar la incidencia
 #La incidencia quedará registrada con el nombre del alumno, codigo del libro y los tres datos del préstamo.

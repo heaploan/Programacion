@@ -6,14 +6,7 @@ from library import *
 #Si todo está en orden, mostrará un mensaje de 'libro registrado' y se agregará el libro al diccionario.
 def addLlibre(command):
     if len(command) == 6:
-        if checkBooks(command[1]):
-            if command[5].isdigit() and int(command[5]) > 0:
-                booksUpdate(command[1], command[2], command[3], command[4], command[5])
-                print('Libro registrado.')
-            else:
-                print('ERROR: ¡Número de páginas incorrecto!')
-        else:
-            print('ERROR: ¡Ya existe un libro con este código')
+        checkPages(command)
     else:
         print('ERROR: ¡Número de argumentos incorrecto')
 
@@ -35,7 +28,6 @@ def startPrestec(command):
 #El libro tiene que existir y tiene que estar en préstamo para poderse regresar
 def endPrestec(command):
     if len(command) == 3:
-        
         if not checkBooks(command[1]):
             checkDate(command[1], command[2])
         else:
