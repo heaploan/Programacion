@@ -181,20 +181,11 @@ def infoStudent(command):
 #Verifica que el alumno esté en el diccionario incidencias
 def studentIncidence(command):
     print("Incidències:")
-    
     if command in incidences:
         for incidence in incidences[command]:
             print(f"Libro: {incidence[0]}  inicio: {incidence[1]} fin: {incidence[2]} entrega: {incidence[3]}")
     else:
         print("El alumno indicado no tiene incidencias registradas.")    
-
-def printStats():
-    media = getMedia()
-    incidences = getTotalIncidences()
-    prestamos = getPrestamos()
-    print(f"Media de páginas por libro: {media}")
-    print(f"Total de incidencias: {incidences}")
-    print(f"Prestamos: {prestamos}")
 
 #Recibe los datos que hay de los libros, si no hay libros, regresa 0 para no dividir entre 0.
 #En caso de haber libros, hace una media de las páginas que hay en los libros, dividiendola por la longitud del diccionario books.
@@ -221,3 +212,11 @@ def getPrestamos():
         return len(lendings)
     else:
         return 0
+
+def printStats():
+    media = getMedia()
+    incidences = getTotalIncidences()
+    prestamos = getPrestamos()
+    print(f"Media de páginas por libro: {media}")
+    print(f"Total de incidencias: {incidences}")
+    print(f"Prestamos: {prestamos}")
