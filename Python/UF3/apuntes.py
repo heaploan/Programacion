@@ -34,13 +34,6 @@ import sys
 #linea = file.readline()
 #print(linea)
 
-
-
-
-
-
-
-
 #Esto es un ejemplo (por eso no hay funciones ni modulos)
 #Aplicación que registra notas de alumnos mediante linea de comandos.
 #uso fitxers.py nombreAlumno nota (para añadir alumno)
