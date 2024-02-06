@@ -8,5 +8,7 @@ if len(sys.argv) < 3:
     sys.exit(1)
 if sys.argv[1].lower() == 'afegir' and sys.argv[2].lower() == 'habitacio':
         addRoom(sys.argv)  # Pasamos sys.argv como argumento a addRoomToFile
+elif sys.argv[1].lower() == 'afegir' and sys.argv[2].lower() == 'reserva':
+    print('Reserva')
 else:
     print("ERROR: Comando incorrecto")
