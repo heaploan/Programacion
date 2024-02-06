@@ -10,8 +10,8 @@ def checkParametros(command, n):
     else:
         print(f"ERROR: Número de argumentos incorrecto.")
 
-def checkArguments():
-    if len(sys.argv) < 2 :
+def checkArguments(minimos):
+    if len(sys.argv) < minimos :
         print("ERROR: Se esperaban al menos 2 argumentos.")
         sys.exit(1)
 
@@ -21,20 +21,8 @@ def checkRoom(command):
     else:
         return False
 
-def roomsUpdate(command):
-    rooms[command[2]] = { 'capacidad': command[3],
-                     'precio': command[4]}
+def roomsUpdate(numero, capacidad, precio):
+    rooms[numero] = { 'capacidad': capacidad,
+                     'precio': precio}
 
-
-def main():
-    if checkArguments(2):
-        com = sys.argv[1].lower()
-        com2 = sys.argv[2:].lower()
-    if com == 'afegir':
-        subCom = com2[0].lower()
-        if subCom == 'habitacio':
-            print()
-        elif subCom == 'reserva':
-            print()
-        else:
-            print("ERROR comando incorrecto")
+print(rooms)
