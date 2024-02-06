@@ -1,2 +1,0 @@
-from hotel import *
-
