@@ -1,12 +1,54 @@
 import os
 import sys 
 
+#--------------------------
+#open(nombreArchivo,modo)
+#--------------------------
+
+#   *r: modo read o modo de lectura.
+#       Si abro un archivo en este modo, y este no existe, lanza un error.
+
+#   *w: modo write o modo escritura.
+#       - Si el archivo no existe, lo crea.
+#       - Si el archivo existe, los datos contenidos en el, son eliminados.
+
+#   *a: modo add o modo añadir.
+#       - Si el archivo no existe lo crea
+#       - Si el archivo existe, los nuevos datos son guardados al final (los anteriores se mantienen.)
+
+#Retorna un fichero.
+#Con los archivos que más se trabajarán:
+#       -'.txt'
+#       -'.csv'
+
+#file = open('rooms.txt', 'string') #cambiamos string por lo que se quiera hacer, 'r', 'w' o 'a'
+
+#--------------------------
+#readline()
+#--------------------------
+
+#Retorna la linea en la cual se encuentra el puntero.
+#Una vez se aplica el readline, el puntero se mueve a la segunda línea
+#Cuando abrimos el archivo por primera vez, el puntero estará en la primera línea.
+
+#linea = file.readline()
+#print(linea)
+
+
+
+
+
+
+
+
 #Esto es un ejemplo (por eso no hay funciones ni modulos)
 #Aplicación que registra notas de alumnos mediante linea de comandos.
 #uso fitxers.py nombreAlumno nota (para añadir alumno)
 #Uso fitxers.py list (para listar datos de los alumnos)
 
 alumnos = {}
+
+
 nombreCarpeta = "pesaos"
 rutaArchivo = "./" + nombreCarpeta + "/notas.txt"
 #Si existe la carpeta
@@ -45,13 +87,14 @@ if len(command) > 1:
         else:
             print("Comando incorrecto") 
 
+
     elif len(command) == 3:
         nombre = command[1]
         nota = int(command[2])
         if nombre not in alumnos:
             #escribimos en el diccionario
             alumnos[nombre] = nota
-            #escribimos en el fichero ("con o para añadir")
+            #escribimos en el fichero ("con a para añadir")
             f = open(rutaArchivo, "a")
             f.write(nombre + "-" + str(nota) + "\n")
             f.close()

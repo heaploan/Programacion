@@ -2,27 +2,31 @@ import files
 import sys
 
 rooms = {}
-bookings = {}
 
 def checkParametros(command, n):
-    if len(command) == n:
-        return True
-    else:
+    if len(command) < n:
         print(f"ERROR: Número de argumentos incorrecto.")
-
-def checkArguments(minimos):
-    if len(sys.argv) < minimos :
-        print("ERROR: Se esperaban al menos 2 argumentos.")
-        sys.exit(1)
-
-def checkRoom(command):
-    if command[2] in rooms:
-        print('ERROR: Ya existe una habitación con el número indicado')
-    else:
         return False
+    else:
+        return True
 
-def roomsUpdate(numero, capacidad, precio):
-    rooms[numero] = { 'capacidad': capacidad,
-                     'precio': precio}
+def afegirHabitacio(command):
+    numero = command[0]
+    capacidad = command[1]
+    precio = command[2]
+    rooms = files.roomsFile()
+    for n in rooms:
+        if n in rooms:
+            print("ERROR: Ya hay una habitación registrada con ese número.")
+        else:
+            rooms[numero] = {'capacidad': capacidad,
+                             'precio': precio,
+                             'estado': 'disponible'}
+            
 
-print(rooms)
+def main():
+    command = sys.argv
+    if command[0] == 'afegir' and command[1] == 'habitacio':
+        if checkParametros(command, 6):
+            afegirHabitacio()
+    
