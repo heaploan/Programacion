@@ -1,7 +1,7 @@
-import hotel
+import hotel as h
 import os
 
-def RoomsFile():
+def roomsFile():
     folderName = "dades"
     roomsFilePath = "./" + folderName + "/habitacions.txt"
     if os.path.exists(folderName):
@@ -21,7 +21,7 @@ def RoomsFile():
                 capacity = int(data[2])
                 price = int(data[3])
             #agregamos la habitación = el numero de habitación, la capacidad y el precio (ya convertidos)
-                hotel.rooms[num] = {'capacidad': capacity, 
+                h.rooms[num] = {'capacidad': capacity, 
                                     'precio': price}
     else:
         os.mkdir(folderName)

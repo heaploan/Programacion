@@ -1,4 +1,4 @@
-import files
+import persistence as p
 import sys
 
 rooms = {}
@@ -14,7 +14,6 @@ def afegirHabitacio(command):
     numero = command[0]
     capacidad = command[1]
     precio = command[2]
-    rooms = files.roomsFile()
     for n in rooms:
         if n in rooms:
             print("ERROR: Ya hay una habitación registrada con ese número.")
@@ -22,7 +21,7 @@ def afegirHabitacio(command):
             rooms[numero] = {'capacidad': capacidad,
                              'precio': precio,
                              'estado': 'disponible'}
-            
+            rooms = p.roomsFile()
 
 def main():
     command = sys.argv
