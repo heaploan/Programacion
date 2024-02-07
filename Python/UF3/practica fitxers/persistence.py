@@ -1,8 +1,9 @@
 import os
 import hotel as h  # Importamos el módulo hotel donde se encuentra definido el diccionario h.rooms
-
+import interpreter as i
 # Ruta del archivo donde se guardan los datos de las habitaciones
 roomFilePath = "./dades/habitacions.txt"
+bookingFilePath = "./dades/reserves.txt"
 
 # Función para cargar las habitaciones desde el archivo
 def loadRoomsFromFile():
@@ -25,6 +26,31 @@ def loadRoomsFromFile():
                 h.rooms[roomNum] = {'cantidad': cantidad, 
                                     'precio': precio, 
                                     'estado': estado}
+        # Cerramos el archivo después de leerlo
+        f.close()
+
+def loadbookingFromFile():
+    # Verificamos si el archivo existe
+    if os.path.exists(bookingFilePath):
+        # Abrimos el archivo en modo de lectura
+        f = open(bookingFilePath, "r")
+        # Iteramos sobre cada línea del archivo
+        for line in f:
+            # Dividimos la línea en sus partes separadas por comas
+            data = line.strip().split(',')
+            # Verificamos que la línea tenga datos y que el primer elemento sea un número
+            if data and data[0].isdigit():
+                # Extraemos los datos de la habitación de la línea
+                roomNum = int(data[0])
+                nom = int(data[1])
+                cognom = float(data[2])
+                dni = data[3]
+                telefon = int(data[4]).strip()  # Eliminamos los espacios en blanco alrededor del telefono
+                # Creamos un diccionario con los datos de la habitación y lo agregamos al diccionario de habitaciones en el módulo hotel
+                h.bookings[roomNum] = {'nom': nom, 
+                                    'cognom': cognom, 
+                                    'dni': dni,
+                                    'telefon': telefon}
         # Cerramos el archivo después de leerlo
         f.close()
 
@@ -56,3 +82,13 @@ def addRoomToFile(command):
         f.write(f"{roomNum},{quantity},{price},DISPONIBLE\n")  # Escribimos la información de la habitación en el archivo
         f.close()  # No olvides cerrar el archivo después de escribir en él
         print("Habitacio registrada")  # Mostramos un mensaje indicando que la habitación ha sido registrada
+
+def addBookingToFile(command):
+    roomNum = int(command[3])
+    nom = command[4]
+    cognom = command[5]
+    dni = command[6]
+    telefon = command[7]
+    if roomNum not in h.bookings:
+        if i.verificacioNif(dni):
+            print()

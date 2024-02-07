@@ -29,8 +29,19 @@ def addRoom(command):
         # Verificamos si la habitación ya está en el diccionario de habitaciones
         if roomNum not in rooms:
             # Si la habitación no está en el diccionario, la añadimos
-            rooms[roomNum] = {'capacitat': command[4], 'preu': command[5], 'estat': 'DISPONIBLE'}
+            rooms[roomNum] = {'capacitat': command[4], 
+                              'preu': command[5], 
+                              'estat': 'DISPONIBLE'}
         # Llamamos a la función para añadir la habitación al archivo
         p.addRoomToFile(command)
 
-
+def addBooking(command):
+    if checkParametros(command, 8):
+        p.loadbookingFromFile()
+        roomNum = int(command[3])
+        if roomNum not in bookings:
+            bookings[roomNum] = {'nom': command[4],
+                                 'cognom': command[5],
+                                 'dni': command[6],
+                                 'telefon': command[7]}
+            
