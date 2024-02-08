@@ -23,7 +23,7 @@ def addRoom(command):
     # Verificamos si los parámetros son correctos
     if checkParametros(command, 6):
         # Cargamos las habitaciones desde el archivo
-        p.loadRoomsFromFile()
+        rooms = p.loadRoomsFromFile()
         # Extraemos el número de habitación de los argumentos y lo convertimos a entero, es necesario que lo sea para poder hacer el if siguiente.
         roomNum = int(command[3])
         # Verificamos si la habitación ya está en el diccionario de habitaciones
@@ -35,8 +35,11 @@ def addRoom(command):
         # Llamamos a la función para añadir la habitación al archivo
         p.addRoomToFile(command)
 
+
 def addBooking(command):
-    if checkParametros(command, 8):
+    rooms =p.loadRoomsFromFile()
+    roomNum = int(command[3])
+    if roomNum not in rooms:
         p.loadbookingFromFile()
         roomNum = int(command[3])
         if roomNum not in bookings:
@@ -44,4 +47,7 @@ def addBooking(command):
                                  'cognom': command[5],
                                  'dni': command[6],
                                  'telefon': command[7]}
+        p.addBookingToFile(command)
+    else:
+        print("no existe")
             
