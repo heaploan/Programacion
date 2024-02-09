@@ -98,7 +98,7 @@ def verAvailability(roomNum):
         if status == "DISPONIBLE":
             return True
         else:
-            print("ERROR: Ya hay una reserva para esa habitación")
+            print("ERROR: La habitación no está disponible para reservas")
             return False
     else:
         print("ERROR: la habitación no existe")
