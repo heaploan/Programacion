@@ -87,10 +87,13 @@ def addBookingToFile(roomNum, name, lastName, dni, phone):
     elif os.path.exists(bookingsFile):
         if isRoomInFile(int(roomNum)):
             if not isbookingInFile(int(roomNum)):
-                if v.verTelefon(phone):
-                    f = open(bookingsFile, "a")
-                    f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
-                    f.close()
+                if v.verificacioNif(dni):
+                    if v.verTelefon(phone):
+                        f = open(bookingsFile, "a")
+                        f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
+                        f.close()
+                else:
+                    print("ERROR: DNI incorrecto")
 
 def verAvailability(roomNum):
     rooms = loadData("habitacio")
