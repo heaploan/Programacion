@@ -1,17 +1,17 @@
-import datetime as dt
+# import datetime as dt
 
-misiones = {}
+# misiones = {}
 
-def checkMission(command):
-    if command not in misiones:
-        return True
-    else:
-        return False
+# def checkMission(command):
+#     if command not in misiones:
+#         return True
+#     else:
+#         return False
 
-def checkMissios(command):
-    if checkMission(command[1]):
-        addMission()
+# def checkMissios(command):
+#     if checkMission(command[1]):
+#         addMission()
 
-def addMission(command):
-    if len(command) == 4:
-        misiones[]
+# def addMission(command):
+#     if len(command) == 4:
+#         misiones[]

@@ -1,11 +1,11 @@
-from interpreter import *
+# from interpreter import *
 
-check = True
+# check = True
 
-while check:
-    command = input('').split(',')
-    com = command[0].lower()
-    if com == 'registrar':
+# while check:
+#     command = input('').split(',')
+#     com = command[0].lower()
+#     if com == 'registrar':
         
-    else:
-        print("ERROR: comando incorrecto")
+#     else:
+#         print("ERROR: comando incorrecto")
