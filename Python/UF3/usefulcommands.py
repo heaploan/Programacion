@@ -3,11 +3,11 @@ import os
 #Verifica la longitud del comando.
 dictionary = {}
 
-def checkParametros(command, n):
-    if len(command) == n:
+def commandVal(args, n):
+    if len(args) == n:
         return True
     else:
-        print(f"ERROR: Número de argumentos incorrecto.")
+        print('ERROR: número de argumentos incorrecto')
 
 def checkArguments():
     if len(sys.argv) < 3:
@@ -34,3 +34,24 @@ def fileEnd():
         #character = file.read(1) 
         #if character == "": #Si el elemento está vacío
             EOF = True
+
+def verTelefon(telefon):
+    if len(telefon) == 9 and telefon.isdigit():
+            return True
+    else:
+        return False
+    
+def verificacioNif(nif):
+    if len(nif) != 9:
+        print("ERROR: DNI incorrecto")
+        return False
+    letra = nif[-1].upper()
+    if not nif[:-1].isdigit() or not letra.isalpha():
+        print("ERROR: DNI incorrecto")
+        return False
+    letrasValidas = 'TRWAGMYFPDXBNJZSQVHLCKE'
+    controlLetra = int(nif[:-1]) % 23
+    if letra != letrasValidas[controlLetra]:
+        print("ERROR: DNI incorrecto")
+        return False
+    return True
