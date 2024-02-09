@@ -101,7 +101,7 @@ def verAvailability(roomNum):
             print("ERROR: La habitación no está disponible para reservas")
             return False
     else:
-        print("ERROR: la habitación no existe")
+        print("ERROR: No existe una habitación con el número indicado")
         
 def updateRoomStatus(roomNum):
     f = open(roomsFile, "r")
