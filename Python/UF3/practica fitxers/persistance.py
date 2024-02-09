@@ -1,6 +1,8 @@
 import os
 import validator as v
+
 # Este modulo está hecho para gestionar los ficheros y su contenido.
+
 folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
 bookingsFile = folderName + "/reserves.txt"
@@ -57,8 +59,6 @@ def addRoomToFile(roomNum, cap, price):
             f = open(roomsFile, "a")
             f.write(f"{roomNum},{cap},{price},DISPONIBLE\n")
             f.close()
-
-
 
 def isbookingInFile(roomNum):
     # Abrimos el archivo en modo de lectura

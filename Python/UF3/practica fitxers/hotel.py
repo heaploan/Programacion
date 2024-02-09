@@ -1,52 +1,28 @@
-import persistence as p
-from interpreter import *
+import validator as v
+import persistance as p
 
-rooms = {}
-bookings = {}
+# Este modulo se ha creado para gestionar la información de los diccionarios.
 
-# Habitación -> nº(id), capacidad, precio por día, estado (DISPONIBLE, BRUTA, OCUPADA)
- 
-# Reserva -> nom, cognom, dni, telefon
+dict = {}
 
-# La aplicación tiene que ser persistente, los datos tienen que quedar guardados en ficheros
-# de manera que cuando se cierre, la aplicación no pierda los datos registrados
-# y se puedan cargar a la siguiente ejecución. Los datos se tienen que guardar
-# en una carpeta llamada dades, dentro tienen que haber dos archivos
-# uno con los datos de habitaciones y otro con reservas.
-# se tiene que guardar con el mismo formato los dos archivos .txt.
-
-# Para comodidad, no existirá menú y la aplicació funcionará por línea de comandos.
-# ejemplo: py ./main.py afegir habitacio 100 1 45.90
-# en el archivo de habitacio tendria que quedar: 100, 1, 45.90, DISPONIBLE
-
-def addRoom(command):
-
-        # Cargamos las habitaciones desde el archivo
-        rooms = p.loadRoomsFromFile()
-        # Extraemos el número de habitación de los argumentos y lo convertimos a entero, es necesario que lo sea para poder hacer el if siguiente.
-        roomNum = int(command[3])
-        # Verificamos si la habitación ya está en el diccionario de habitaciones
-        if roomNum not in rooms:
-            # Si la habitación no está en el diccionario, la añadimos
-            rooms[roomNum] = {'capacitat': command[4], 
-                              'preu': command[5], 
-                              'estat': 'DISPONIBLE'}
-        # Llamamos a la función para añadir la habitación al archivo
-        p.addRoomToFile(command)
-
-
-def addBooking(command):
-    rooms =p.loadRoomsFromFile()
-    roomNum = int(command[3])
-    if roomNum not in rooms:
-        p.loadbookingFromFile()
-        roomNum = int(command[3])
-        if roomNum not in bookings:
-            bookings[roomNum] = {'nom': command[4],
-                                 'cognom': command[5],
-                                 'dni': command[6],
-                                 'telefon': command[7]}
-        p.addBookingToFile(command)
+def addRoom(roomNum, cap, price):
+    dict = p.loadData("habitacio")
+    if roomNum in dict:
+        print("ERROR: Ya existe una habitación con el número indicado")
     else:
-        print("no existe")
-            
+        if v.checkcapacity(cap) and v.checkPrice(price):
+            dict[roomNum] = {'cap': cap, 'price': price, 'disp': 'DISPONIBLE'}
+            p.addRoomToFile(roomNum, cap, price)
+            print("Habitacion registrada")
+
+def addBooking(roomNum, name, lastName, dni, phone):
+    dict = p.loadData("reserva")
+    if p.verAvailability(roomNum):
+        if v.verificacioNif(dni):
+            if v.verTelefon(phone):
+                dict[roomNum] = {'name': name, 'last': lastName, 'dni': dni, 'phone': phone}
+                p.addBookingToFile(roomNum, name, lastName, dni, phone)
+                p.updateRoomStatus(roomNum)
+                print("Reserva registrada")
+            else:
+                print("ERROR: numero incorrecto")
