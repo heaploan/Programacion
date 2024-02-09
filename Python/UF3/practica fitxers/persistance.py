@@ -7,6 +7,10 @@ folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
 bookingsFile = folderName + "/reserves.txt"
 
+# Esta función está creada para leer los archivos y pasarel contenido al diccionario
+# Si no existe la carpeta, la crea
+# Finalmente devuelve el diccionario ya con los datos introducidos en este
+# También depende de qué mención se haya hecho en la linea de comandos, si 'habitacio' o 'reserva', leerá los respectivos. 
 def loadData(type):
     folderName = "./dades"
     if not os.path.exists(folderName):
@@ -30,6 +34,7 @@ def loadData(type):
                         dict[roomNum] = {'name': data[1], 'lastName': data[2], 'dni': data[3], 'phone': data[4]}   
     return dict
 
+#Comprueba si la habitación está guardada en el archivo 'habitacions'
 def isRoomInFile(roomNum):
     # Abrimos el archivo en modo de lectura
     if os.path.exists(roomsFile):
@@ -47,6 +52,8 @@ def isRoomInFile(roomNum):
         f.close()
     return False
 
+# Agrega la habitación al archivo de texto separado por comas.
+# Si no existe la carpeta, la crea, si tampoco existe el archivo, lo crea y añade la información
 def addRoomToFile(roomNum, cap, price):
     if not os.path.exists(folderName):
         os.mkdir(folderName)
@@ -60,6 +67,7 @@ def addRoomToFile(roomNum, cap, price):
             f.write(f"{roomNum},{cap},{price},DISPONIBLE\n")
             f.close()
 
+# Verifica si la reserva está en el archivo
 def isbookingInFile(roomNum):
     # Abrimos el archivo en modo de lectura
     f = open(bookingsFile, "r")
@@ -76,6 +84,7 @@ def isbookingInFile(roomNum):
     f.close()
     return False
 
+# Agrega la reserva al archivo de texto, si la carpeta y el archivo no existen, los crea
 def addBookingToFile(roomNum, name, lastName, dni, phone):
     if not os.path.exists(folderName):
         os.mkdir(folderName)
@@ -95,6 +104,7 @@ def addBookingToFile(roomNum, name, lastName, dni, phone):
                 else:
                     print("ERROR: DNI incorrecto")
 
+# Verifica la disponibilidad de la habitación, en caso de estar disponible, devolverá True, en caso contrario, False
 def verAvailability(roomNum):
     rooms = loadData("habitacio")
     if roomNum in rooms:
@@ -106,7 +116,8 @@ def verAvailability(roomNum):
             return False
     else:
         print("ERROR: No existe una habitación con el número indicado")
-        
+
+# Actualiza el estado de la habitación dependiendo de lo que se le introduzca ('DISPONIBLE', 'OCUPADA', 'BRUTA')
 def updateRoomStatus(roomNum,newStatus):
     f = open(roomsFile, "r")
     lines = f.readlines()
@@ -120,6 +131,7 @@ def updateRoomStatus(roomNum,newStatus):
             f.write(line)
     f.close()
 
+# Actualiza el archivo de reservas, reescribiendo todo menos el número de habitación que se ingresó.
 def updateBookingsFile(roomNum):
     f = open(bookingsFile, "r")
     lines = f.readlines()
@@ -130,6 +142,4 @@ def updateBookingsFile(roomNum):
         if data[0] != roomNum:
             f.write(line)
     f.close()
-
-
 
