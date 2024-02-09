@@ -20,8 +20,7 @@ bookings = {}
 # en el archivo de habitacio tendria que quedar: 100, 1, 45.90, DISPONIBLE
 
 def addRoom(command):
-    # Verificamos si los parámetros son correctos
-    if checkParametros(command, 6):
+
         # Cargamos las habitaciones desde el archivo
         rooms = p.loadRoomsFromFile()
         # Extraemos el número de habitación de los argumentos y lo convertimos a entero, es necesario que lo sea para poder hacer el if siguiente.

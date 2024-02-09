@@ -12,7 +12,6 @@ def addRoom(roomNum, cap, price):
             dict[roomNum] = {'cap': cap, 'price': price, 'disp': 'DISPONIBLE'}
             p.addRoomToFile(roomNum, cap, price)
             print("Habitacion añadida")
-        print(dict)
 
 def addBooking(roomNum, name, lastName, dni, phone):
     dict = p.loadData("reserva")
@@ -23,4 +22,3 @@ def addBooking(roomNum, name, lastName, dni, phone):
                 p.addBookingToFile(roomNum, name, lastName, dni, phone)
                 p.updateRoomStatus(roomNum)
                 print("Reserva añadida")
-                print(dict)
