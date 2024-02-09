@@ -6,12 +6,12 @@ dict = {}
 def addRoom(roomNum, cap, price):
     dict = p.loadData("habitacio")
     if roomNum in dict:
-        print("ERROR: La habitación ya existe")
+        print("ERROR: Ya existe una habitación con el número indicado")
     else:
         if v.checkcapacity(cap) and v.checkPrice(price):
             dict[roomNum] = {'cap': cap, 'price': price, 'disp': 'DISPONIBLE'}
             p.addRoomToFile(roomNum, cap, price)
-            print("Habitacion añadida")
+            print("Habitacion registrada")
 
 def addBooking(roomNum, name, lastName, dni, phone):
     dict = p.loadData("reserva")
@@ -21,6 +21,6 @@ def addBooking(roomNum, name, lastName, dni, phone):
                 dict[roomNum] = {'name': name, 'last': lastName, 'dni': dni, 'phone': phone}
                 p.addBookingToFile(roomNum, name, lastName, dni, phone)
                 p.updateRoomStatus(roomNum)
-                print("Reserva añadida")
+                print("Reserva registrada")
             else:
                 print("ERROR: numero incorrecto")
