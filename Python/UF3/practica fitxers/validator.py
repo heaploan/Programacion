@@ -3,7 +3,6 @@ import hotel as h
 
 # Este modulo está creado para validar el comando que se escribe.
 
-
 def commandVal(args, n):
     if len(args) == n:
         return True
