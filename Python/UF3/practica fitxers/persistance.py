@@ -1,7 +1,7 @@
 import os
 import validator as v
 
-# Este modulo está hecho para gestionar los ficheros y su contenido.
+# Este modulo está hecho para gestionar los ficheros, su creación y su contenido.
 
 folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
@@ -80,9 +80,10 @@ def addBookingToFile(roomNum, name, lastName, dni, phone):
     if not os.path.exists(folderName):
         os.mkdir(folderName)
     if not os.path.exists(bookingsFile):  # Crea el archivo si no existe   
-        f = open(bookingsFile, "w")
-        f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
-        f.close()
+        if isRoomInFile(int(roomNum)):
+            f = open(bookingsFile, "a")
+            f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
+            f.close()
     elif os.path.exists(bookingsFile):
         if isRoomInFile(int(roomNum)):
             if not isbookingInFile(int(roomNum)):
