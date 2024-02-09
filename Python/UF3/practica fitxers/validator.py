@@ -55,3 +55,7 @@ def convertBookingData(command):
     h.addBooking(roomNum, name, last, dni, phone)
     p.addBookingToFile(roomNum, name, last, dni, phone)
 
+def convEndData(command):
+    roomNum = command[2]
+    day = int(command[3])
+    h.endBooking(roomNum, day)

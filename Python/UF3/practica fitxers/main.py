@@ -16,8 +16,8 @@ if len(sys.argv) > 1:
         else:
             print("ERROR: numero de argumentos incorrecto")
     elif arg1 == 'finalitzar':
-        if commandVal(sys.argv, 3):
-            print('flinalitzar')
+        if commandVal(sys.argv, 4):
+            convEndData(sys.argv)
     elif arg1 == 'netejar':
         if commandVal(sys.argv, 3):
             print('netejar')

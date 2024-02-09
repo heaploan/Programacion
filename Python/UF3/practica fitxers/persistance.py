@@ -107,15 +107,27 @@ def verAvailability(roomNum):
     else:
         print("ERROR: No existe una habitación con el número indicado")
         
-def updateRoomStatus(roomNum):
+def updateRoomStatus(roomNum,newStatus):
     f = open(roomsFile, "r")
     lines = f.readlines()
+    f.close()
     f = open(roomsFile, "w")
     for line in lines:
         data = line.strip().split(',')
         if data[0] == roomNum:
-            f.write(f"{roomNum},{data[1]},{data[2]}, OCUPADA\n")
+            f.write(f"{roomNum},{data[1]},{data[2]},{newStatus}\n")
         else:
+            f.write(line)
+    f.close()
+
+def updateBookingsFile(roomNum):
+    f = open(bookingsFile, "r")
+    lines = f.readlines()
+    f.close()
+    f = open(bookingsFile, "w")
+    for line in lines:
+        data = line.strip().split(',')
+        if data[0] != roomNum:
             f.write(line)
     f.close()
 
