@@ -1,7 +1,8 @@
-import sys as s
-# Este modulo está creado para validar el comando que se escribe.
 import persistance as p
 import hotel as h
+
+# Este modulo está creado para validar el comando que se escribe.
+
 
 def commandVal(args, n):
     if len(args) == n:
@@ -24,6 +25,18 @@ def verificacioNif(nif):
         return False
     return True
 
+def checkcapacity(cap):
+    if cap > 0:
+        return True
+    else:
+        print("ERROR: Capacidad incorrecta, debe ser mayor a 0")
+
+def checkPrice(price):
+    if price > 0:
+        return True
+    else:
+        print("ERROR: Precio incorrecto, debe ser mayor 0")
+
 def verTelefon(telefon):
     if len(telefon) == 9 and telefon.isdigit():
             return True
@@ -37,18 +50,6 @@ def convertRoomData(command):
     h.addRoom(roomNum, cap, price)
     p.addRoomToFile(roomNum, cap, price)
     
-def checkcapacity(cap):
-    if cap > 0:
-        return True
-    else:
-        print("ERROR: Capacidad incorrecta, debe ser mayor a 0")
-
-def checkPrice(price):
-    if price > 0:
-        return True
-    else:
-        print("ERROR: Precio incorrecto, debe ser mayor 0")
-
 def convertBookingData(command):
     roomNum = (command[3])
     name = command[4]
