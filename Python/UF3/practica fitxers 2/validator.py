@@ -25,8 +25,8 @@ def verificacioNif(nif):
     return True
 
 def verTelefon(telefon):
-    if telefon.isdigit() and len(telefon) == 9:
-        return True
+    if len(telefon) == 9 and telefon.isdigit():
+            return True
     else:
         return False
     

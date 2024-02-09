@@ -1,4 +1,5 @@
 import os
+import validator as v
 # Este modulo está hecho para gestionar los ficheros y su contenido.
 folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
@@ -85,9 +86,10 @@ def addBookingToFile(roomNum, name, lastName, dni, phone):
     elif os.path.exists(bookingsFile):
         if isRoomInFile(int(roomNum)):
             if not isbookingInFile(int(roomNum)):
-                f = open(bookingsFile, "a")
-                f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
-                f.close()
+                if v.verTelefon(phone):
+                    f = open(bookingsFile, "a")
+                    f.write(f"{roomNum},{name},{lastName},{dni},{phone}\n")
+                    f.close()
 
 def verAvailability(roomNum):
     rooms = loadData("habitacio")

@@ -22,3 +22,5 @@ def addBooking(roomNum, name, lastName, dni, phone):
                 p.addBookingToFile(roomNum, name, lastName, dni, phone)
                 p.updateRoomStatus(roomNum)
                 print("Reserva añadida")
+            else:
+                print("ERROR: numero incorrecto")
