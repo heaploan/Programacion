@@ -62,4 +62,4 @@ def convEndData(command):
 
 def convClean(command):
     roomNum = command[2]
-    h.netejar(roomNum)
+    h.cleaner(roomNum)
