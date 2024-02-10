@@ -48,4 +48,13 @@ def endBooking(roomNum, day):
     else: 
         print('No existe una habitación con el número indicado')
 
-
+def netejar(roomNum):
+    dict = p.loadData('habitacio')
+    if roomNum in dict:
+        if dict[roomNum]['disp'] == 'BRUTA':
+            p.updateRoomStatus(roomNum,'DISPONIBLE')
+            print('Habitación limpia. Queda disponible')
+        else:
+            print('La habitación no está "BRUTA"')
+    else:
+        print("No existe una habitación con el número indicado")

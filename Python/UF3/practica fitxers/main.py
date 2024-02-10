@@ -20,7 +20,7 @@ if len(sys.argv) > 1:
             convEndData(sys.argv)
     elif arg1 == 'netejar':
         if commandVal(sys.argv, 3):
-            print('netejar')
+            convClean(sys.argv)
     elif arg1 == 'list':
         if commandVal(sys.argv, 2):
             print('list')

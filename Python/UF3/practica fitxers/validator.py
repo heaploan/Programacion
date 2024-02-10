@@ -59,3 +59,7 @@ def convEndData(command):
     roomNum = command[2]
     day = int(command[3])
     h.endBooking(roomNum, day)
+
+def convClean(command):
+    roomNum = command[2]
+    h.netejar(roomNum)
