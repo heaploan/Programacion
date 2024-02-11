@@ -3,6 +3,9 @@ import persistance as p
 
 # Este modulo se ha creado para gestionar la información de los diccionarios.
 
+# Esta funcion recibe el número, capacidad y precio de la habitación
+# Dentro cargamos el contenido del archivo 'habitacio.txt'
+# Comprobamos que exista la habitación, y que su capacidad y precio sean mayores a 
 def addRoom(roomNum, cap, price):
     dict = p.loadData("habitacio")
     if roomNum in dict:
