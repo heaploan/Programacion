@@ -29,7 +29,7 @@ if len(sys.argv) > 1:
             print('info dni')
     elif arg1 == 'reserves':
         if commandVal(sys.argv, 2):
-            print('reserves')
+            reserves()
     else:
         print("ERROR: Comando incorrecto")
 else:

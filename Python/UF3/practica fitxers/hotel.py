@@ -62,23 +62,35 @@ def cleaner(roomNum):
 def roomList():
     dry = p.loadData('habitacio')
     dry2 = p.loadData('reserva')
-    disp = 0
-    ocu = 0
-    brut = 0
-    print("========\tINFO HOTEL\t========")
-    print("Hab\tCap\tEstat\t")
-    for key, value in dry.items():
-        print(f"{key}\t{value['cap']}\t{value['disp']}", end=" ")
-        if key in dry2:
-            print(f"\t==> Client: {dry2[key]['name']} {dry2[key]['last']}")
-        else:
-            print()
-        if value['disp'] == 'DISPONIBLE':
-            disp += 1
-        elif value['disp'] == 'OCUPADA':
-            ocu += 1
-        elif value['disp'] == 'BRUTA':
-            brut += 1
-    print('=========================================')
-    print(f'Total habitacions: {len(dry)}')
-    print(f'Disponibles: {disp}  Ocupades: {ocu}  Brutes: {brut}')
+    if dry:
+        print("========\tINFO HOTEL\t========")
+        print("Hab\tCap\tEstat\t")
+        disp = 0
+        ocu = 0
+        brut = 0
+        for key, value in dry.items():
+            print(f"{key}\t{value['cap']}\t{value['disp']}", end=" ")
+            if key in dry2:
+                print(f"\t==> Client: {dry2[key]['name']} {dry2[key]['last']}")
+            else:
+                print()
+            if value['disp'] == 'DISPONIBLE':
+                disp += 1
+            elif value['disp'] == 'OCUPADA':
+                ocu += 1
+            elif value['disp'] == 'BRUTA':
+                brut += 1
+        print('=========================================')
+        print(f'Total habitacions: {len(dry)}')
+        print(f'Disponibles: {disp}  Ocupades: {ocu}  Brutes: {brut}')
+    else: 
+        print("ERROR: No hay habitaciones registradas")
+
+def reserves():
+    dry = p.loadData('reserva')
+    if dry:
+        print('========     RESERVES        ========')
+        for key, value in dry.items():
+            print(f"{key}: {value['dni']} - {value['name']} {value['last']} - {value['phone']}")
+    else:
+        print('ERROR: No hay reservas registradas')
