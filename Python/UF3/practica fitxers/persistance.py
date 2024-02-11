@@ -24,13 +24,14 @@ def loadData(type):
         f = open(filePath, "r")
         for line in f:
             data = line.strip().split(",")    
-            print(data)
             if type == "habitacio":
+                if len(data) >= 4:
                     roomNum = data[0]   
                     dict[roomNum] = {'cap': data[1], 'price': data[2], 'disp': data[3]}
-            elif type == "reserva":
-                    roomNum = data[0]
-                    dict[roomNum] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
+                elif type == "reserva":
+                    if len(data) >= 5:
+                        roomNum = data[0]
+                        dict[roomNum] = {'name': data[1], 'lastName': data[2], 'dni': data[3], 'phone': data[4]}   
     return dict
 
 #Comprueba si la habitación está guardada en el archivo 'habitacions'
