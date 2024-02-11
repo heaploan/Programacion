@@ -92,7 +92,7 @@ def cleaner(roomNum):
         print("No existe una habitación con el número indicado")
 
 def roomList():
-    # Carga los datos de habitaciones y reservas desde archivos
+    # Carga los datos de habitaciones y reservas desde archivos en dos variables para usar los datos de ambos de ambos.
     dry = p.loadData('habitacio')
     dry2 = p.loadData('reserva')
     if dry:
