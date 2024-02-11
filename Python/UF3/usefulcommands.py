@@ -35,12 +35,14 @@ def fileEnd():
         #if character == "": #Si el elemento está vacío
             EOF = True
 
+# Función que se encarga de comprobar los digitos del teléfono.
 def verTelefon(telefon):
     if len(telefon) == 9 and telefon.isdigit():
             return True
     else:
         return False
-    
+
+# Función que se encarga de verificar si el DNI es válido
 def verificacioNif(nif):
     if len(nif) != 9:
         print("ERROR: DNI incorrecto")
