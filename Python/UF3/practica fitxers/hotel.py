@@ -68,9 +68,9 @@ def roomList():
     print("========\tINFO HOTEL\t========")
     print("Hab\tCap\tEstat\t")
     for key, value in dry.items():
-        print(f"{key}\t{value['cap']}\t{value['disp']}", end="")
+        print(f"{key}\t{value['cap']}\t{value['disp']}", end=" ")
         if key in dry2:
-            print(f" \t==> Client: {dry2[key]['name']} {dry2[key]['last']}")
+            print(f"\t==> Client: {dry2[key]['name']} {dry2[key]['last']}")
         else:
             print()
         if value['disp'] == 'DISPONIBLE':
