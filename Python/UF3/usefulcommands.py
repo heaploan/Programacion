@@ -55,3 +55,30 @@ def verificacioNif(nif):
         print("ERROR: DNI incorrecto")
         return False
     return True
+
+folderName = "./dades"
+roomsFile = folderName + "/habitacions.txt"
+bookingsFile = folderName + "/reserves.txt"
+
+def loadData(type):
+    folderName = "./dades"
+    if not os.path.exists(folderName):
+        os.mkdir(folderName)
+    if type == "habitacio":
+        filePath = folderName + "/habitacions.txt"
+    elif type == "reserva":
+        filePath = folderName + "/reserves.txt"
+    dict = {}
+    if os.path.exists(filePath):
+        f = open(filePath, "r")
+        for line in f:
+            data = line.strip().split(",")    
+            if type == "habitacio":
+                if len(data) >= 4:
+                    roomNum = data[0]   
+                    dict[roomNum] = {'cap': data[1], 'price': data[2], 'disp': data[3]}
+            elif type == "reserva":
+                if len(data) >= 5:
+                    roomNum = data[0]
+                    dict[roomNum] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
+    return dict
