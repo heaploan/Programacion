@@ -63,3 +63,8 @@ def convEndData(command):
 def convClean(command):
     roomNum = command[2]
     h.cleaner(roomNum)
+
+def getDni(command):
+    dni = command[2]
+    if verificacioNif(dni):
+        h.infoDni(dni)

@@ -26,7 +26,7 @@ if len(sys.argv) > 1:
             roomList()
     elif arg1 == 'info':
         if commandVal(sys.argv, 3):
-            print('info dni')
+            getDni(sys.argv)
     elif arg1 == 'reserves':
         if commandVal(sys.argv, 2):
             reserves()

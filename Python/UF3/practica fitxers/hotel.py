@@ -89,8 +89,23 @@ def roomList():
 def reserves():
     dry = p.loadData('reserva')
     if dry:
-        print('========     RESERVES        ========')
+        print('========\tRESERVES\t========')
         for key, value in dry.items():
             print(f"{key}: {value['dni']} - {value['name']} {value['last']} - {value['phone']}")
     else:
         print('ERROR: No hay reservas registradas')
+
+def infoDni(dni):
+    dry = p.loadData('reserva')
+    if dry:
+        cliente = False
+        for key, value in dry.items():
+            if value['dni'] == dni:
+                if not cliente:
+                    print(f"Dades del client:\t{value['last']} , {value['name']} - tfn: {value['phone']}")
+                    cliente = True
+                print(f"habitacio: {key}")
+        if not cliente:
+            print('ERROR: No se encontraron reservas asociadas a ese DNI')
+    
+                
