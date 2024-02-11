@@ -23,7 +23,7 @@ if len(sys.argv) > 1:
             convClean(sys.argv)
     elif arg1 == 'list':
         if commandVal(sys.argv, 2):
-            print('list')
+            roomList()
     elif arg1 == 'info':
         if commandVal(sys.argv, 3):
             print('info dni')
