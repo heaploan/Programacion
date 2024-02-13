@@ -27,11 +27,12 @@ def loadData(type):
             if type == "habitacio":
                 if len(data) >= 4:
                     roomNum = data[0]   
-                    dict[roomNum] = {'cap': data[1], 'price': data[2], 'disp': data[3]}
+                    dict[int(roomNum)] = {'cap': int(data[1]), 'price': float(data[2]), 'disp': data[3]}
             elif type == "reserva":
                 if len(data) >= 5:
                     roomNum = data[0]
-                    dict[roomNum] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
+                    dict[int(roomNum)] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
+        f.close()
     return dict
 
 #Comprueba si la habitación está guardada en el archivo 'habitacions'
@@ -62,7 +63,7 @@ def addRoomToFile(roomNum, cap, price):
         f.write(f"{roomNum},{cap},{price},DISPONIBLE\n")
         f.close()
     elif os.path.exists(roomsFile):  # Crea el archivo si no existe
-        if not isRoomInFile(int(roomNum)):
+        if not isRoomInFile(roomNum):
             f = open(roomsFile, "a")
             f.write(f"{roomNum},{cap},{price},DISPONIBLE\n")
             f.close()
@@ -125,7 +126,7 @@ def updateRoomStatus(roomNum,newStatus):
     f = open(roomsFile, "w")
     for line in lines:
         data = line.strip().split(',')
-        if data[0] == roomNum:
+        if int(data[0]) == roomNum:
             f.write(f"{roomNum},{data[1]},{data[2]},{newStatus}\n")
         else:
             f.write(line)
@@ -139,7 +140,7 @@ def updateBookingsFile(roomNum):
     f = open(bookingsFile, "w")
     for line in lines:
         data = line.strip().split(',')
-        if data[0] != roomNum:
+        if int(data[0]) != roomNum:
             f.write(line)
     f.close()
 

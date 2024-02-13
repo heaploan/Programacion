@@ -44,36 +44,50 @@ def verTelefon(telefon):
     else:
         return False
 
+def numVal(num):
+    if num.isdigit():
+        return int(num)
+    else:
+        return False
+
+def floatVal(num):
+    fl = num.split('.')
+    if len(fl) > 1:
+        if fl[0].isdigit() and fl[1].isdigit():
+            return float(num)
+    else:
+        if num.isdigit():
+            return float(num)
+    return False
+
 # Función que se encarga de convertir los datos de habitación y dividirla por valores.
 # También pasa los valores a las otras funciones como addRoom y addRoomToFile
 def convertRoomData(command):
-    roomNum = command[3]
-    cap = int(command[4])
-    price = float(command[5])
-    h.addRoom(roomNum, cap, price)
-    p.addRoomToFile(roomNum, cap, price)
+        roomNum = numVal(command[3])
+        cap = numVal(command[4])
+        price = floatVal(command[5])
+        h.addRoom(roomNum, cap, price)
 
 # Función que se encarga de convertir los datos de reservas y dividirla por valores
 # también pasa los valores a las otras funciones como addBooking y addBookingToFile
 def convertBookingData(command):
-    roomNum = (command[3])
+    roomNum = numVal(command[3])
     name = command[4]
     last = command[5]
     dni = command[6]
     phone = command[7]
     h.addBooking(roomNum, name, last, dni, phone)
-    p.addBookingToFile(roomNum, name, last, dni, phone)
 
 # Función que se encarga de convertir los datos de finalizar
 # También pasa los datos a la función endBooking
 def convEndData(command):
-    roomNum = command[2]
-    day = int(command[3])
+    roomNum = numVal(command[2])
+    day = command[3]
     h.endBooking(roomNum, day)
 
 # Función para convertir el dato y pasarlo a la funcion cleaner
 def convClean(command):
-    roomNum = command[2]
+    roomNum = numVal(command[2])
     h.cleaner(roomNum)
 
 # Función que obtiene el dni, utiliza la función de verificar dni
@@ -82,3 +96,5 @@ def getDni(command):
     dni = command[2]
     if verificacioNif(dni):
         h.infoDni(dni)
+    else:
+        print('ERROR: DNI inválido')

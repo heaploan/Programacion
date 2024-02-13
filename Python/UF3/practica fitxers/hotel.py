@@ -13,13 +13,16 @@ def addRoom(roomNum, cap, price):
         print("ERROR: Ya existe una habitación con el número indicado")
     else:
         # Verifica la capacidad y el precio de la habitación
-        if v.checkcapacity(cap) and v.checkPrice(price):
-            # Agrega la habitación al diccionario de habitaciones
-            dict[roomNum] = {'cap': cap, 'price': price, 'disp': 'DISPONIBLE'}
-            # Agrega la habitación al archivo de datos de habitaciones
-            p.addRoomToFile(roomNum, cap, price)
-            # Imprime un mensaje de éxito
-            print("Habitacion registrada")
+        if roomNum > 0:
+            if v.checkcapacity(cap) and v.checkPrice(price):
+                # Agrega la habitación al diccionario de habitaciones
+                dict[roomNum] = {'cap': cap, 'price': price, 'disp': 'DISPONIBLE'}
+                # Agrega la habitación al archivo de datos de habitaciones
+                p.addRoomToFile(roomNum, cap, price)
+                # Imprime un mensaje de éxito
+                print("Habitacion registrada")
+        else:
+            print('ERROR: El número de la habitación tiene que ser mayor a 0')
 
 def addBooking(roomNum, name, lastName, dni, phone):
     # Carga los datos de reservas desde un archivo
@@ -41,40 +44,47 @@ def addBooking(roomNum, name, lastName, dni, phone):
             else:
                 # Imprime un mensaje de error si el número de teléfono es incorrecto
                 print("ERROR: numero incorrecto")
+        else: 
+            print("ERROR: DNI incorrecto")
+    
 
 def endBooking(roomNum, day):
     # Carga los datos de habitaciones desde un archivo
     dict = p.loadData('habitacio')
-    d = int(day)
-    if roomNum in dict:
-        if dict[roomNum]['disp'] == 'OCUPADA':
-            if d > 0:
-                # Calcula el precio total de la estancia
-                price = dict[roomNum]['price']
-                pr = float(price)
-                total = d * pr
-                # Actualiza el estado de la habitación a BRUTA
-                p.updateRoomStatus(roomNum,'BRUTA')
-                # Actualiza el archivo de reservas
-                p.updateBookingsFile(roomNum)
-                # Imprime el precio total y un mensaje informativo
-                print(f"Precio total: {total:.2f}. La habitación queda en espera del servicio de limpieza.")
-            elif day == 0:
-                if dict[roomNum]['disp'] == 'OCUPADA':
-                    # Actualiza el estado de la habitación a DISPONIBLE si se cancela la reserva
-                    p.updateRoomStatus(roomNum,'DISPONIBLE')
+    if day.isdigit() or (day[0] == "-" and day[1:].isdigit()):
+        d = int(day)
+        if roomNum in dict:
+            if dict[roomNum]['disp'] == 'OCUPADA':
+                if d > 0:
+                    # Calcula el precio total de la estancia
+                    price = dict[roomNum]['price']
+                    pr = price
+                    total = d * pr
+                    # Actualiza el estado de la habitación a BRUTA
+                    p.updateRoomStatus(roomNum,'BRUTA')
                     # Actualiza el archivo de reservas
                     p.updateBookingsFile(roomNum)
+                    # Imprime el precio total y un mensaje informativo
+                    print(f"Precio total: {total:.2f}€. La habitación queda en espera del servicio de limpieza.")
+                elif d == 0:
+                    if dict[roomNum]['disp'] == 'OCUPADA':
+                        # Actualiza el estado de la habitación a DISPONIBLE si se cancela la reserva
+                        p.updateRoomStatus(roomNum,'DISPONIBLE')
+                        # Actualiza el archivo de reservas
+                        p.updateBookingsFile(roomNum)
+                        print("Reserva cancelada, la habitación queda disponible")
+                else:
+                    # Imprime un mensaje de error si el número de días es negativo
+                    print('ERROR: El número de días no puede ser negativo. Si quieres anular la reserva, indica numero de dias 0.')
             else:
-                # Imprime un mensaje de error si el número de días es negativo
-                print('ERROR: El número de días no puede ser negativo. Si quieres anular la reserva, indica numero de dias 0.')
-        else:
-            # Imprime un mensaje de error si la habitación no está ocupada
-            print("ERROR: esta habitación no está reservada")
-    else: 
-        # Imprime un mensaje de error si la habitación no existe
-        print('No existe una habitación con el número indicado')
-
+                # Imprime un mensaje de error si la habitación no está ocupada
+                print("ERROR: esta habitación no está reservada")
+        else: 
+            # Imprime un mensaje de error si la habitación no existe
+            print('No existe una habitación con el número indicado')
+    else:
+        print("ERROR: El día debe ser un número")
+        
 def cleaner(roomNum):
     # Carga los datos de habitaciones desde un archivo
     dict = p.loadData('habitacio')
@@ -124,22 +134,10 @@ def roomList():
         # Imprime un mensaje de error si no hay habitaciones registradas
         print("ERROR: No hay habitaciones registradas")
 
-def reserves():
-    # Carga los datos de reservas desde un archivo
-    dry = p.loadData('reserva')
-    if dry:
-        # Imprime información sobre las reservas realizadas
-        print('========\tRESERVES\t========')
-        for key, value in dry.items():
-            print(f"{key}: {value['dni']} - {value['name']} {value['last']} - {value['phone']}")
-    else:
-        # Imprime un mensaje de error si no hay reservas registradas
-        print('ERROR: No hay reservas registradas')
-
 def infoDni(dni):
     # Carga los datos de reservas desde un archivo
     dry = p.loadData('reserva')
-    if dry:
+    if dry != {}:
         cliente = False
         # Busca reservas asociadas al DNI dado
         for key, value in dry.items():
@@ -152,5 +150,17 @@ def infoDni(dni):
         if not cliente:
             # Imprime un mensaje de error si no se encontraron reservas asociadas al DNI dado
             print('ERROR: No se encontraron reservas asociadas a ese DNI')
+    else:
+        print('ERROR: No hay reservas')
     
-                
+def reserves():
+    # Carga los datos de reservas desde un archivo
+    dry = p.loadData('reserva')
+    if dry:
+        # Imprime información sobre las reservas realizadas
+        print('========\tRESERVES\t========')
+        for key, value in dry.items():
+            print(f"{key}: {value['dni']} - {value['name']} {value['last']} - {value['phone']}")
+    else:
+        # Imprime un mensaje de error si no hay reservas registradas
+        print('ERROR: No hay reservas registradas')
