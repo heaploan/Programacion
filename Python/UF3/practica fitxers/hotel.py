@@ -72,7 +72,7 @@ def endBooking(roomNum, day):
                         p.updateRoomStatus(roomNum,'DISPONIBLE')
                         # Actualiza el archivo de reservas
                         p.updateBookingsFile(roomNum)
-                        print("Reserva cancelada, la habitación queda disponible")
+                        print("Reserva cancelada. Sin costo. La habitación queda disponible")
                 else:
                     # Imprime un mensaje de error si el número de días es negativo
                     print('ERROR: El número de días no puede ser negativo. Si quieres anular la reserva, indica numero de dias 0.')
