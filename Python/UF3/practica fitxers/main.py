@@ -3,7 +3,6 @@ import hotel as h
 import sys
 from hotel import *
 
-# ejemplo: py ./main.py afegir habitacio 100 1 45.90
 if len(sys.argv) > 1:
     arg1 = sys.argv[1].lower()
     if arg1 == 'afegir':
