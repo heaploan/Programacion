@@ -3,6 +3,7 @@ import validator as v
 
 # Este modulo está hecho para gestionar los ficheros, su creación y su contenido.
 
+# le damos el nombre a la carpeta que queremos crear y luego usamos la misma variable para poder crear el archivo con su nombre y tipo.
 folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
 bookingsFile = folderName + "/reserves.txt"
