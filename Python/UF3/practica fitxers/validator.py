@@ -71,10 +71,10 @@ def floatVal(num):
 # Función que se encarga de convertir los datos de habitación y dividirla por valores.
 # También pasa los valores a las otras funciones como addRoom y addRoomToFile
 def convertRoomData(command):
-        roomNum = numVal(command[3])
-        cap = numVal(command[4])
-        price = floatVal(command[5])
-        h.addRoom(roomNum, cap, price)
+    roomNum = numVal(command[3])
+    cap = numVal(command[4])
+    price = floatVal(command[5])
+    h.addRoom(roomNum, cap, price)
 
 # Función que se encarga de convertir los datos de reservas y dividirla por valores
 # también pasa los valores a las otras funciones como addBooking y addBookingToFile
