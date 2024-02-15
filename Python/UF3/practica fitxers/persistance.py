@@ -50,7 +50,6 @@ def isRoomInFile(roomNum):
 # Recibimos el numero de habitación, capacidad y precio.
 # Comprobamos la existencia de la carpeta y el archivo, en caso de no existir lo creamos y añadimos la información
 # Guardamos los datos en el archivo .txt
-
 def addRoomToFile(roomNum, cap, price):
     if not os.path.exists(folderName):
         os.mkdir(folderName)
@@ -76,7 +75,9 @@ def isbookingInFile(roomNum):
     f.close()
     return False
 
-
+# Recibimos el número de habitación, nombre, apellido, dni y teléfono.
+# si la carpreta no existe, la crea, si el archivo no existe, lo crea y agrega la información.
+# si el archivo existe, agrega la información y hace sus respectivas comprobaciones
 def addBookingToFile(roomNum, name, lastName, dni, phone):
     if not os.path.exists(folderName):
         os.mkdir(folderName)
@@ -96,6 +97,10 @@ def addBookingToFile(roomNum, name, lastName, dni, phone):
                 else:
                     print("ERROR: DNI incorrecto")
 
+# Recibe numero de habitacion
+# carga el archivo 'habitacions.txt'
+# Si la disponibilidad de la habitación indicada es 'disponible' devuelve True
+# En caso contrario, devuelve False e imprime los respectivos errores. 
 def verAvailability(roomNum):
     rooms = loadData("habitacio")
     if roomNum in rooms:
@@ -108,6 +113,8 @@ def verAvailability(roomNum):
     else:
         print("ERROR: No existe una habitación con el número indicado")
 
+# Recibe numero de habitación y el nuevo estado
+# lee el archivo de habitaciones y al encontrar la habitación indicada, sobreescribe la disponibilidad por la que le hemos pasado. 
 def updateRoomStatus(roomNum,newStatus):
     f = open(roomsFile, "r")
     lines = f.readlines()
@@ -121,6 +128,8 @@ def updateRoomStatus(roomNum,newStatus):
             f.write(line)
     f.close()
 
+# reecibe numero de habitación
+# Lee el archivo y si encuentra la habitación, no la escribe y todas las que no coinciden, son reescritas.
 def updateBookingsFile(roomNum):
     f = open(bookingsFile, "r")
     lines = f.readlines()
