@@ -23,13 +23,12 @@ boolean, 1 byte, true / false
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        /*
         String name = "";
         BufferedReader input = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Escribe tu nombre: ");
         name = input.readLine();
         System.out.println("Hello " + name + "!");
-        Scanner input = new Scanner (System.in); / este suele dar error y por eso no se usa mucho.
+        // Scanner input = new Scanner (System.in); / este suele dar error y por eso no se usa mucho.
         int entire = 0;
         short small = 2;
         long big = 12345;
@@ -38,17 +37,5 @@ public class Main {
         System.out.println("Introduce un numero entero:");
         entire = Integer.parseInt(input.readLine());
         System.out.println("Numero introducido: " + entire);
-        */
-        int a, b, c;
-        a = 1;
-        b = 4;
-        c = a + b;
-        System.out.println(c);
-        /*
-        Creas variables diciendo el tipo que son, se les asigna un valor a 'a' y 'b' y se hace la suma en c.
-        Al final se imprime 'c'
-        */
-        System.out.println(args[0]);
-        System.out.println(args[1]);
     }
 }
