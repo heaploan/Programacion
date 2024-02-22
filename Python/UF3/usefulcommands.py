@@ -1,5 +1,6 @@
 import sys
 import os
+import datetime as dt
 #Verifica la longitud del comando.
 dictionary = {}
 
@@ -84,3 +85,85 @@ def loadData(type):
                     roomNum = data[0]
                     dict[roomNum] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
     return dict
+
+# Calcula si el año es bisiesto
+def isLeap(year):
+    if (year % 4 == 0 and year % 100 != 0) or year % 400 == 0:
+        return [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+    else:
+        return [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+# convierte la fecha a un formato
+def convertDate(date):
+    d, m, y = date.split('-')
+    if d.isdigit() and m.isdigit() and y.isdigit() and 0 < int(y) and 0 < int(m) < 13:
+        d, m, y = int(d), int(m), int(y)
+        m_days = isLeap(y)
+        if 0 < d <= m_days[m-1]:
+            start = dt.date(y, m, d).strftime("%d-%m-%Y")
+            return start
+        else:
+            return False
+    else:
+        return False
+
+# da formato a la fecha.
+def dateFormat(date):
+    date = date.split("-")
+    d = int(date[0])
+    m = int(date[1])
+    y = int(date[2])
+    return dt.date(y,m,d)
+
+# mira la mision mas antigua y la imprime.
+def transcurseDays(start, today):
+    day = today - start
+    day = day.days
+    if day == 0:
+        print("Hoy es la mision mas antigua.")
+    else:
+        print(f"Han passat {day} dies.")
+
+# Mira las misiones de un año y muestra solo las de ese año.
+def checkAndListYearMision(year):
+    check = 0
+    for mision in misiones:
+        date = misiones[mision]["fecha"].split("-")
+        y = date[2]
+        if y == year:
+            check += 1
+            print(f"{misiones[mision]['fecha']}\t{mision}")
+    if check == 0:
+        print("El año introducido no tiene misiones.")
+
+# Funcion que mira las misiones durante una semana, la de hoy y la de mañana.
+def checkMisionesSemana(today, seven):
+    check = 0
+    dema = today + dt.timedelta(days = 1)
+    for mision in misiones:
+        misiondate = dateFormat(misiones[mision]["fecha"])
+        if today <= misiondate <= seven:
+            check += 1
+            if misiondate == today:
+                print(f"=> * AVUI *\t{mision}\t{misiones[mision]['lugar']}")
+            elif misiondate == dema:
+                print(f"=> DEMÀ\t{mision}\t{misiones[mision]['lugar']}")
+            else:
+                print(f"{misiones[mision]['fecha']} :\t{mision}\t{misiones[mision]['lugar']}")
+    if check == 0:
+        print("No hay misiones para esta semana.")
+
+# Funcion que mira la fecha más antigua. 
+def oldestMision():
+    first = 0
+    today = dt.date.today()
+    for mision in misiones:
+        fecha = dateFormat(misiones[mision]["fecha"])
+        if first == 0:
+            first = 1
+            oldest = mision
+            oldestdate = fecha
+        else:
+            if fecha < oldestdate:
+                oldest = mision
+                oldestdate = fecha
