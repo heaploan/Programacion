@@ -8,7 +8,6 @@ if len(sys.argv) > 1:
     if arg1 == 'afegir':
         arg2 = sys.argv[2].lower()
         if len(sys.argv) == 6 and arg2 == 'habitacio':
-            p.loadData(arg2)
             convertRoomData(sys.argv)
         elif len(sys.argv) == 8 and arg2 == 'reserva':
             convertBookingData(sys.argv)

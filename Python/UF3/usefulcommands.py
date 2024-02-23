@@ -10,23 +10,17 @@ def commandVal(args, n):
     else:
         print('ERROR: número de argumentos incorrecto')
 
-def checkArguments():
-    if len(sys.argv) < 3:
-        print("ERROR: se esperaban al menos 2 argumentos.")
-
 #Verifica si el diccionario está vacío o no.
 def checkContent():
     if dictionary == {}:
         return True
-    else:
-        return False
+    return False
     
 #Cuenta el largo del contenido del diccionario y lo devuelve.
 def getLen():
     if dictionary:
         return len(dictionary)
-    else:
-        return 0
+    return 0
 
 #detectar fin de fichero
 def fileEnd():
@@ -40,19 +34,15 @@ def fileEnd():
 def verTelefon(telefon):
     if len(telefon) == 9 and telefon.isdigit():
             return True
-    else:
-        return False
+    return False
 
 # Función que se encarga de verificar si el DNI es válido
 def verificacioNif(nif):
-    if len(nif) != 9:
-        print("ERROR: DNI incorrecto")
-        return False
-    letra = nif[-1].upper()
-    if not nif[:-1].isdigit() or not letra.isalpha():
-        print("ERROR: DNI incorrecto")
-        return False
     letrasValidas = 'TRWAGMYFPDXBNJZSQVHLCKE'
+    letra = nif[-1].upper()
+    if len(nif) != 9 and (not nif[:-1].isdigit() or not letra.isalpha()):
+        print("ERROR: DNI incorrecto")
+        return False
     controlLetra = int(nif[:-1]) % 23
     if letra != letrasValidas[controlLetra]:
         print("ERROR: DNI incorrecto")
@@ -63,6 +53,9 @@ folderName = "./dades"
 roomsFile = folderName + "/habitacions.txt"
 bookingsFile = folderName + "/reserves.txt"
 
+# funcion que se encarga de crear la carpeta y el archivo si no existen
+# dependiendo de lo que se pase de información, habitacio o reserva se crearan archivos de habitacions o reserves
+# también dependiendo de la palabra leerá uno u otro archivo y pasará la información correspondiente a dict y devolverá dict.
 def loadData(type):
     folderName = "./dades"
     if not os.path.exists(folderName):
@@ -107,7 +100,7 @@ def convertDate(date):
     else:
         return False
 
-# da formato a la fecha.
+# divide la fecha por dia, mes y año y le da formato de datetime
 def dateFormat(date):
     date = date.split("-")
     d = int(date[0])
@@ -124,7 +117,8 @@ def transcurseDays(start, today):
     else:
         print(f"Han passat {day} dies.")
 
-# Mira las misiones de un año y muestra solo las de ese año.
+# Recibe año, coge la información de la fecha en el diccionario, coge el año en concreto
+# Compara el que recibe con el obtenido del diccionario e imprime solo las misiones de ese año.
 def checkAndListYearMision(year):
     check = 0
     for mision in misiones:
@@ -167,3 +161,7 @@ def oldestMision():
             if fecha < oldestdate:
                 oldest = mision
                 oldestdate = fecha
+
+
+fecha = dt.date(y, m, d).strptime("%d-%m-%Y") #pasa la fecha de string a fecha
+fecha = dt.date(y,m,d).strftime("%d-%m-%Y") # pasa pasa la fecha de fecha a string

@@ -19,7 +19,7 @@ def loadData(type):
         filePath = folderName + "/habitacions.txt"
     elif type == "reserva":
         filePath = folderName + "/reserves.txt"
-    dict = {}
+    dicc = {}
     if os.path.exists(filePath):
         f = open(filePath, "r")
         for line in f:
@@ -33,7 +33,9 @@ def loadData(type):
                     roomNum = data[0]
                     dict[int(roomNum)] = {'name': data[1], 'last': data[2], 'dni': data[3], 'phone': data[4]}   
         f.close()
-    return dict
+    return dicc
+
+
 
 # Recibimos numero de habitacion y comprobamos que exista el archivo y validamos el contenido.
 def isRoomInFile(roomNum):
