@@ -16,6 +16,7 @@ def loadData():
             if len(data) >= 4:
                 dni = data[0]
                 dicc[dni] = {'Grau superior': data[1], 'Nota': data[2], 'Data': data[3]}
+        f.close()
     return dicc
 
 def isDniInFile(dni):

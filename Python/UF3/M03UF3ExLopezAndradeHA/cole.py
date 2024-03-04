@@ -5,18 +5,24 @@ import datetime as dt
 
 def addAlta(dni, grau, nota, data):
     dicc = p.loadData()
+    d = dni.upper()
     if dni in dicc:
         print("ERROR: Ya hay una inscripcion con el DNI indicado.")
     else:
-        if v.verificacioNif(dni):
-            dicc[dni] = {'Grau superior': grau, 'Nota': nota, 'Data': data}
-            p.addAltaToFile(dni, grau, nota, data)
-            print("Alta realizada con éxito.")
+        if dni not in dicc:
+            if v.verificacioNif(d):
+                n = v.floatVal(nota)
+                if v.notaVal(n):
+                    dicc[d] = {'Grau superior': grau, 'Nota': nota, 'Data': data}
+                    p.addAltaToFile(d, grau, nota, data)
+                    print("Alta realizada con éxito.")
+                else:
+                    print("ERROR: Nota inválida")
 
 def baixa(dni):
     dicc = p.loadData()
-    if dni in dicc:
-        p.updateInscripcionsFile(dni)
+    if dni.upper() in dicc:
+        p.updateInscripcionsFile(dni.upper())
         print("Inscripción eliminada exitosamente.")
     else:
         print("No hay alumnos con el DNI indicado")

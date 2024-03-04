@@ -30,7 +30,7 @@ def convertAlta(command):
     return dni, gSup, nota, data
 
 def floatVal(num):
-    fl = num.split('.')
+    fl = str(num).split('.')
     if len(fl) > 1:
         if fl[0].isdigit() and fl[1].isdigit():
             return float(num)
@@ -40,10 +40,9 @@ def floatVal(num):
     return False
 
 def notaVal(nota):
-    if floatVal(nota):
-        if nota >= 5:
-            return True
-        return False
+    if nota >= 5 and nota <=10:
+        return True
+    return False
 
 def grauVal(grau):
     if grau == 'AIF' or grau == 'TIL' or grau == 'MIN' or grau == 'DAM' or grau == 'ASIC':
