@@ -1,4 +1,4 @@
-package org.example;
+package actividad1;
 
 public class Planeta {
     private int mass;
